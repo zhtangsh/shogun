@@ -63,5 +63,6 @@ export default {
   'pages.searchTable.batchDeletion': '批量删除',
   'pages.searchTable.batchApproval': '批量审批',
   'pages.positionAnalysis': '仓位分析',
-  'pages.positionAnalysis.daily': '日度持仓分析',
+  'pages.positionAnalysis.daily': '日度持仓查询',
+  'pages.positionAnalysis.analysis': '持仓分析',
 };

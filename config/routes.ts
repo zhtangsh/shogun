@@ -40,6 +40,11 @@ export default [
       {
         path: '/positionAnalysis/daily',
         name: 'daily',
+        component: './PositionAnalysis/DailyPositionQuery',
+      },
+      {
+        path: '/positionAnalysis/analysis',
+        name: 'analysis',
         component: './PositionAnalysis/DailyPositionAnalysis',
       },
     ],

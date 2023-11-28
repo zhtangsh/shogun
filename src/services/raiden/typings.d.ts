@@ -65,4 +65,56 @@ declare namespace API {
     /** 排序方向 */
     sortOrder?: string;
   };
+
+  type DailyImpactCostSumDto = {
+    /** 冲击成本汇总 */
+    impactCostSum?: number;
+    /** 交易数目 */
+    numberTrade?: number;
+    /** 日期 */
+    recordDate: string;
+    /** 总成交金额 */
+    tradedAmountSum?: number;
+  };
+
+  type DailyImpactCostDto = {
+    /** 唯一ID */
+    id?: string;
+    /** 冲击成本 */
+    impactCost?: number;
+    /** 策略备注 */
+    orderRemark?: string;
+    /** 交易类型 */
+    orderType?: '股票买入' | '股票卖出';
+    /** 日期 */
+    recordDate?: string;
+    /** 股票编码 */
+    stockCode?: string;
+    /** 策略名称 */
+    strategyName?: string;
+    /** vwap1m */
+    tradePrice?: number;
+    /** 成交金额 */
+    tradedAmount?: number;
+    /** 交易ID */
+    tradedId?: string;
+    /** 交易日期 */
+    tradedTime?: string;
+    /** 成交量 */
+    tradedVolume?: string;
+    /** vwap1m */
+    vwap1mPrice?: number;
+  };
+
+  type dailyImpactCostListUsingGETParams = {
+    /** 记录日期 */
+    recordDate?: string;
+  };
+
+  type dailyImpactCostStatisticUsingGETParams = {
+    /** 结束时间 */
+    endDate?: string;
+    /** 开始时间 */
+    startDate?: string;
+  };
 }

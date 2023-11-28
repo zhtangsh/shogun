@@ -26,9 +26,11 @@ const buildLabel = (record: API.DailyPositionDto) => {
       }
     }
   }
-  return <Tag key={`${record.stockCode}.${name}`} color={color}>
-    {name}
-  </Tag>;
+  return (
+    <Tag key={`${record.stockCode}.${name}`} color={color}>
+      {name}
+    </Tag>
+  );
 };
 const DailyPositionProTable: React.FC = () => {
   const actionRef = useRef<ActionType>();
@@ -70,13 +72,7 @@ const DailyPositionProTable: React.FC = () => {
     {
       title: '标签',
       search: false,
-      render: (_, record) => (
-        <Space>
-          {
-            buildLabel(record)
-          }
-        </Space>
-      ),
+      render: (_, record) => <Space>{buildLabel(record)}</Space>,
     },
   ];
   const getPositionData = async (params: any) => {

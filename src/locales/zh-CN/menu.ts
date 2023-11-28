@@ -50,5 +50,6 @@ export default {
   'menu.editor.mind': '脑图编辑器',
   'menu.editor.koni': '拓扑编辑器',
   'menu.positionAnalysis': '仓位分析',
-  'menu.positionAnalysis.daily': '日度持仓分析',
+  'menu.positionAnalysis.daily': '日度持仓查询',
+  'menu.positionAnalysis.analysis': '持仓分析',
 };
