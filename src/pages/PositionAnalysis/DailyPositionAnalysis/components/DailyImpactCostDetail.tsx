@@ -56,9 +56,9 @@ const DailyImpactCostDetail: React.FC = () => {
   ];
 
   const config = {
+    autoFit: false,
     xField: 'recordDate',
-    yField: 'value',
-    seriesField: 'series',
+    yField: 'impactCostSumBps',
     label: {
       // 配置样式
       style: {
@@ -66,11 +66,8 @@ const DailyImpactCostDetail: React.FC = () => {
         opacity: 0.6,
       },
     },
-    xAxis: {
-      label: {
-        autoHide: true,
-        autoRotate: false,
-      },
+    axis: {
+      y: { labelFormatter: (v: any) => `${v} bps` },
     },
   };
   const getDailyImpactCostSum = async () => {
@@ -79,15 +76,7 @@ const DailyImpactCostDetail: React.FC = () => {
     if (result.status === 0 && result.res) {
       data.push(...result.res);
     }
-    let tmp = [];
-    for (let dto of data) {
-      tmp.push({
-        recordDate: dto.recordDate,
-        series: '冲击成本',
-        value: dto.impactCostSum,
-      });
-    }
-    setBarData(tmp);
+    setBarData(data);
   };
 
   const getDailyImpactCost = async (params: any) => {

@@ -69,6 +69,8 @@ declare namespace API {
   type DailyImpactCostSumDto = {
     /** 冲击成本汇总 */
     impactCostSum?: number;
+    /** 冲击成本汇总Bps */
+    impactCostSumBps?: number;
     /** 交易数目 */
     numberTrade?: number;
     /** 日期 */
