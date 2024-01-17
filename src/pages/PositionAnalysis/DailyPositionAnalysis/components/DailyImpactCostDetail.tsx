@@ -19,9 +19,9 @@ const DailyImpactCostDetail: React.FC = () => {
       dataIndex: 'recordDate',
     },
     {
-      title: '冲击成本',
-      key: 'impactCost',
-      dataIndex: 'impactCost',
+      title: '股票编码',
+      key: 'stockCode',
+      dataIndex: 'stockCode',
     },
     {
       title: '交易类型',
@@ -29,9 +29,9 @@ const DailyImpactCostDetail: React.FC = () => {
       dataIndex: 'orderType',
     },
     {
-      title: '股票编码',
-      key: 'stockCode',
-      dataIndex: 'stockCode',
+      title: '冲击成本',
+      key: 'impactCost',
+      dataIndex: 'impactCost',
     },
     {
       title: 'vwap1m',

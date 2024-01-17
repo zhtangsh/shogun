@@ -119,4 +119,16 @@ declare namespace API {
     /** 开始时间 */
     startDate?: string;
   };
+
+  type PieChartDto = {
+    type?: string;
+    value?: number;
+  };
+
+  type positionMonitorListUsingGETParams = {
+    /** 分组汇总类别 */
+    grouper?: '行业' | '转债类型' | '大小票';
+    /** 记录日期 */
+    recordDate?: number;
+  };
 }
