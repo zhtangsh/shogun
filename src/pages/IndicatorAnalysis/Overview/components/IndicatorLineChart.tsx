@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 
 type IndicatorLineChartProp = {
   linechartConfig: API.IndicatorConfigDto;
+  startDate: string;
+  endDate: string;
 };
 const IndicatorLineChart: React.FC<IndicatorLineChartProp> = (props) => {
   const [data, setData] = useState<API.IndicatorDataDto[]>();
@@ -24,8 +26,8 @@ const IndicatorLineChart: React.FC<IndicatorLineChartProp> = (props) => {
 
   const getIndicatorData = async () => {
     const queryParams: API.indicatorDataListUsingGETParams = {
-      startDate: '2023-10-01',
-      endDate: '2024-01-01',
+      startDate: props.startDate,
+      endDate: props.endDate,
       label: props.linechartConfig.label,
       tableName: props.linechartConfig.tableName,
       nameCode: props.linechartConfig.nameCode,
@@ -42,7 +44,7 @@ const IndicatorLineChart: React.FC<IndicatorLineChartProp> = (props) => {
 
   useEffect(() => {
     getIndicatorData();
-  }, [props.linechartConfig]);
+  }, [props]);
   return (
     <>
       <Line {...config} data={data} />

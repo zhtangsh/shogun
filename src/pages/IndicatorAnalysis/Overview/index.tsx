@@ -1,14 +1,20 @@
 import { gutter } from '@/config/font';
 import { indicatorConfigListUsingGet } from '@/services/raiden/indicatorController';
 import { PageContainer, ProCard } from '@ant-design/pro-components';
-import { Col, Row } from 'antd';
+import { Button, Card, Col, DatePicker, Form, Row } from 'antd';
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import GroupLineChartContainer from './components/GroupLineChartContainer';
+const { RangePicker } = DatePicker;
 
 const DailyPositionAnalysis: React.FC = () => {
   const [indicatorConfigData, setIndicatorConfigData] = useState<
     Record<string, API.IndicatorConfigDto[]>
   >({});
+  const [queryParam, setQueryParam] = useState({
+    startDate: moment('2023-01-01').format('YYYY-MM-DD'),
+    endDate: moment().format('YYYY-MM-DD'),
+  });
   const [tabKeyList, setTabKeyList] = useState<string[]>([]);
   const [activeKey, setActiveKey] = useState('');
   const handleTabsChange = (key: string) => {
@@ -37,12 +43,15 @@ const DailyPositionAnalysis: React.FC = () => {
   };
 
   const generateTab = () => {
+    console.log(queryParam);
     return tabKeyList.map((key) => (
       <ProCard.TabPane key={key} tab={indicatorConfigData[key][0].tabName}>
         <GroupLineChartContainer
           linechartConfig={indicatorConfigData[key].sort((a, b) =>
             a.idx < b.idx ? -1 : a.idx > b.idx ? 1 : 0,
           )}
+          startDate={queryParam.startDate}
+          endDate={queryParam.endDate}
         />
       </ProCard.TabPane>
     ));
@@ -51,9 +60,48 @@ const DailyPositionAnalysis: React.FC = () => {
   useEffect(() => {
     getIndicatorConfig();
   }, []);
+
+  const [form] = Form.useForm();
+  const onFinish = (value: any) => {
+    const { dateRange } = value;
+    console.log(dateRange[0].format('YYYY-MM-DD'));
+    console.log(dateRange[1].format('YYYY-MM-DD'));
+
+    setQueryParam({
+      startDate: dateRange[0].format('YYYY-MM-DD'),
+      endDate: dateRange[1].format('YYYY-MM-DD'),
+    });
+  };
+
   return (
     <>
       <PageContainer header={{ title: false }}>
+        <Row gutter={gutter}>
+          <Col span={24}>
+            <Card>
+              <Form form={form} layout="horizontal" onFinish={onFinish}>
+                <Row gutter={24}>
+                  <Col span={6}>
+                    <Form.Item
+                      name="dateRange"
+                      label="日期"
+                      initialValue={[moment('2023-01-01'), moment()]}
+                    >
+                      <RangePicker />
+                    </Form.Item>
+                  </Col>
+                  <Col span={6}>
+                    <Form.Item>
+                      <Button type="primary" htmlType="submit">
+                        查询
+                      </Button>
+                    </Form.Item>
+                  </Col>
+                </Row>
+              </Form>
+            </Card>
+          </Col>
+        </Row>
         <Row gutter={gutter} justify="center">
           <Col span={24}>
             <ProCard

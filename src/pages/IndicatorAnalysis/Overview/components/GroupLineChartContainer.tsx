@@ -5,6 +5,8 @@ import IndicatorLineChart from './IndicatorLineChart';
 
 type GroupLineChartContainerProps = {
   linechartConfig: API.IndicatorConfigDto[];
+  startDate: string;
+  endDate: string;
 };
 const GroupLineChartContainer: React.FC<GroupLineChartContainerProps> = (props) => {
   return (
@@ -14,7 +16,11 @@ const GroupLineChartContainer: React.FC<GroupLineChartContainerProps> = (props) 
           {props.linechartConfig.map((val) => (
             <Col key={val.label} span={12}>
               <Card title={val.labelName}>
-                <IndicatorLineChart linechartConfig={val} />
+                <IndicatorLineChart
+                  linechartConfig={val}
+                  startDate={props.startDate}
+                  endDate={props.endDate}
+                />
               </Card>
             </Col>
           ))}
