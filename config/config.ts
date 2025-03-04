@@ -137,7 +137,7 @@ export default defineConfig({
   openAPI: [
     {
       requestLibPath: "import { request } from '@umijs/max'; const { BACKEND_URL } = window.API;",
-      schemaPath: 'http://localhost:8800/v2/api-docs',
+      schemaPath: 'http://192.168.1.60:38080/v2/api-docs',
       projectName: 'dropbox',
     },
   ],

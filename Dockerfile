@@ -1,4 +1,4 @@
-FROM 192.168.1.60:29006/tools/nginx:1.17.9
+FROM 192.168.1.50:29006/tools/nginx:1.17.9
 
 ##工作目录
 WORKDIR /var/static/dist

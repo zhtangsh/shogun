@@ -52,4 +52,6 @@ export default {
   'menu.positionAnalysis': '仓位分析',
   'menu.positionAnalysis.daily': '日度持仓查询',
   'menu.positionAnalysis.analysis': '持仓分析',
+  'menu.indicatorAnalysis': '指标分析功能',
+  'menu.indicatorAnalysis.overview': '指标分析',
 };

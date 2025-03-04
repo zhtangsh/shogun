@@ -131,4 +131,40 @@ declare namespace API {
     /** 记录日期 */
     recordDate?: number;
   };
+
+  type indicatorDataListUsingGETParams = {
+    /** cdAdj */
+    cdAdj?: string;
+    /** 结束时间 */
+    endDate?: string;
+    /** 指标名称 */
+    label?: string;
+    /** nameCode */
+    nameCode?: string;
+    /** schema */
+    schema?: string;
+    /** 开始时间 */
+    startDate?: string;
+    /** tableName */
+    tableName?: string;
+  };
+
+  type IndicatorConfigDto = {
+    cdAdj?: string;
+    databaseEngine?: string;
+    idx: string;
+    label?: string;
+    labelName?: string;
+    nameCode?: string;
+    schemaName?: string;
+    tab?: string;
+    tabName?: string;
+    tableName?: string;
+  };
+
+  type IndicatorDataDto = {
+    label?: string;
+    tday?: string;
+    value?: number;
+  };
 }
