@@ -14,6 +14,7 @@ const IndicatorLineChart: React.FC<IndicatorLineChartProp> = (props) => {
     yField: 'value',
     padding: 'auto',
     forceFit: true,
+    title: props.linechartConfig.plotTableName,
     connectNulls: true,
     seriesField: 'labelName',
     colorField: 'labelName',

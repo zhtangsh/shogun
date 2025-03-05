@@ -15,7 +15,7 @@ const GroupLineChartContainer: React.FC<GroupLineChartContainerProps> = (props) 
         <Row>
           {props.linechartConfig.map((val) => (
             <Col key={val.label} span={12}>
-              <Card title={val.labelName}>
+              <Card>
                 <IndicatorLineChart
                   linechartConfig={val}
                   startDate={props.startDate}

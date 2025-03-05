@@ -162,6 +162,7 @@ declare namespace API {
     tab?: string;
     tabName?: string;
     tableName?: string;
+    plotTableName?: string;
   };
 
   type IndicatorDataDto = {
