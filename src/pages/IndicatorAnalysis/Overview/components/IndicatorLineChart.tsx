@@ -15,11 +15,23 @@ const IndicatorLineChart: React.FC<IndicatorLineChartProp> = (props) => {
     padding: 'auto',
     forceFit: true,
     connectNulls: true,
+    seriesField: 'labelName',
+    colorField: 'labelName',
+    theme: 'academy',
     xAxis: {
       type: 'date',
       label: {
         autoHide: true,
         autoRotate: false,
+      },
+    },
+    legend: {
+      color: {
+        layout: {
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+        },
       },
     },
   };

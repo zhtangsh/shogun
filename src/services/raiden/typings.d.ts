@@ -165,8 +165,9 @@ declare namespace API {
   };
 
   type IndicatorDataDto = {
-    label?: string;
-    tday?: string;
-    value?: number;
+    label: string;
+    labelName: string;
+    tday: string;
+    value: number;
   };
 }
