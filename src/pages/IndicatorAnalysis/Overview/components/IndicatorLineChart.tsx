@@ -29,6 +29,7 @@ const IndicatorLineChart: React.FC<IndicatorLineChartProp> = (props) => {
       startDate: props.startDate,
       endDate: props.endDate,
       label: props.linechartConfig.label,
+      labelName: props.linechartConfig.labelName,
       tableName: props.linechartConfig.tableName,
       nameCode: props.linechartConfig.nameCode,
       schema: props.linechartConfig.schemaName,

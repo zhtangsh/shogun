@@ -139,6 +139,8 @@ declare namespace API {
     endDate?: string;
     /** 指标名称 */
     label?: string;
+    /** 指标中文名称 */
+    labelName?: string;
     /** nameCode */
     nameCode?: string;
     /** schema */
