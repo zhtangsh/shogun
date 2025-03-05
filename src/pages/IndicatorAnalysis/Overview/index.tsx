@@ -26,6 +26,7 @@ const DailyPositionAnalysis: React.FC = () => {
     if (result.status === 0 && result.res) {
       dataList.push(...result.res);
     }
+    const tabConfig = {} as Record<string, any>;
     const res = {} as Record<string, API.IndicatorConfigDto[]>;
     for (const data of dataList) {
       const keyValue = data['tab'] || '';
@@ -33,8 +34,14 @@ const DailyPositionAnalysis: React.FC = () => {
         res[keyValue] = [];
       }
       res[keyValue].push(data);
+      tabConfig[keyValue] = {
+        tab: keyValue,
+        tabIdx: data.tabIdx,
+      };
     }
-    const tList = Object.keys(res);
+    const tList = Object.values(tabConfig)
+      .sort((a, b) => (a['tabIdx'] < b['tabIdx'] ? -1 : a['tabIdx'] > b['tabIdx'] ? 1 : 0))
+      .map((v) => v['tab']);
     setIndicatorConfigData(res);
     setTabKeyList(tList);
     if (tList.length > 0) {
@@ -43,7 +50,6 @@ const DailyPositionAnalysis: React.FC = () => {
   };
 
   const generateTab = () => {
-    console.log(queryParam);
     return tabKeyList.map((key) => (
       <ProCard.TabPane key={key} tab={indicatorConfigData[key][0].tabName}>
         <GroupLineChartContainer

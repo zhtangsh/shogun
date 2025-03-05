@@ -160,6 +160,7 @@ declare namespace API {
     nameCode?: string;
     schemaName?: string;
     tab?: string;
+    tabIdx?: number;
     tabName?: string;
     tableName?: string;
     plotTableName?: string;
