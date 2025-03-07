@@ -172,4 +172,13 @@ declare namespace API {
     tday: string;
     value: number;
   };
+
+  type excelExportUsingGETParams = {
+    /** 结束时间 */
+    endDate?: string;
+    /** 开始时间 */
+    startDate?: string;
+    /** tab */
+    tab?: string;
+  };
 }

@@ -78,6 +78,17 @@ const DailyPositionAnalysis: React.FC = () => {
       endDate: dateRange[1].format('YYYY-MM-DD'),
     });
   };
+  const handleDownload = () => {
+    const url = `${window.API.BACKEND_URL}/api/v1/research/indicator/excel?startDate=${queryParam.startDate}&endDate=${queryParam.endDate}&tab=`;
+    // 直接通过浏览器行为下载（无需处理响应）
+    const link = document.createElement('a');
+    link.href = url;
+    // link.download = '自定义文件名.pdf'; // 设置下载后的文件名（跨域时可能失效）
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link); // 清理 DOM
+  };
 
   return (
     <>
@@ -101,6 +112,7 @@ const DailyPositionAnalysis: React.FC = () => {
                       <Button type="primary" htmlType="submit">
                         查询
                       </Button>
+                      <Button onClick={handleDownload}>导出</Button>
                     </Form.Item>
                   </Col>
                 </Row>

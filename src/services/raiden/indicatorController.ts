@@ -31,3 +31,17 @@ export async function indicatorDataListUsingGet(
     },
   );
 }
+/** 指标数据导出 指标数据导出 GET /api/v1/research/indicator/excel */
+export async function excelExportUsingGet(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.excelExportUsingGETParams,
+  options?: { [key: string]: any },
+) {
+  return request<any>(`${BACKEND_URL}/api/v1/research/indicator/excel`, {
+    method: 'GET',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  });
+}
