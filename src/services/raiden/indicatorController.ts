@@ -4,7 +4,10 @@ import { request } from '@umijs/max';
 const { BACKEND_URL } = window.API;
 
 /** 获取指标配置列表 获取指标配置列表 GET /api/v1/research/indicator/config/list */
-export async function indicatorConfigListUsingGet(options?: { [key: string]: any }) {
+export async function indicatorConfigListUsingGet(
+  params: API.indicatorConfigListUsingGETParams,
+  options?: { [key: string]: any },
+) {
   return request<API.CommonResponse<API.IndicatorConfigDto[]>>(
     `${BACKEND_URL}/api/v1/research/indicator/config/list`,
     {

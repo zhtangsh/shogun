@@ -152,18 +152,18 @@ declare namespace API {
   };
 
   type IndicatorConfigDto = {
-    cdAdj?: string;
-    databaseEngine?: string;
+    cdAdj: string;
+    databaseEngine: string;
     idx: string;
-    label?: string;
-    labelName?: string;
-    nameCode?: string;
-    schemaName?: string;
-    tab?: string;
-    tabIdx?: number;
-    tabName?: string;
-    tableName?: string;
-    plotTableName?: string;
+    label: string;
+    labelName: string;
+    nameCode: string;
+    schemaName: string;
+    tab: string;
+    tabIdx: number;
+    tabName: string;
+    tableName: string;
+    plotTableName: string;
   };
 
   type IndicatorDataDto = {
@@ -180,5 +180,9 @@ declare namespace API {
     startDate?: string;
     /** tab */
     tab?: string;
+  };
+  type indicatorConfigListUsingGETParams = {
+    /** tabGroup */
+    tabGroup?: number;
   };
 }

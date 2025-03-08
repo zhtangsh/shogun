@@ -21,7 +21,7 @@ const DailyPositionAnalysis: React.FC = () => {
     setActiveKey(key);
   };
   const getIndicatorConfig = async () => {
-    const result = await indicatorConfigListUsingGet({});
+    const result = await indicatorConfigListUsingGet({ tabGroup: 0 });
     const dataList = [];
     if (result.status === 0 && result.res) {
       dataList.push(...result.res);
@@ -39,6 +39,7 @@ const DailyPositionAnalysis: React.FC = () => {
         tabIdx: data.tabIdx,
       };
     }
+    console.log(tabConfig);
     const tList = Object.values(tabConfig)
       .sort((a, b) => (a['tabIdx'] < b['tabIdx'] ? -1 : a['tabIdx'] > b['tabIdx'] ? 1 : 0))
       .map((v) => v['tab']);
