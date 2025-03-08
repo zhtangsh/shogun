@@ -75,7 +75,7 @@ export default defineConfig({
    * @name layout 插件
    * @doc https://umijs.org/docs/max/layout-menu
    */
-  title: 'Shogun前台管理系统',
+  title: 'TINY',
   layout: {
     locale: true,
     ...defaultSettings,
@@ -137,8 +137,8 @@ export default defineConfig({
   openAPI: [
     {
       requestLibPath: "import { request } from '@umijs/max'; const { BACKEND_URL } = window.API;",
-      schemaPath: 'http://localhost:8800/v2/api-docs',
-      // schemaPath: 'http://192.168.1.60:38080/v2/api-docs',
+      // schemaPath: 'http://localhost:8800/v2/api-docs',
+      schemaPath: 'http://192.168.1.60:38080/v2/api-docs',
       projectName: 'dropbox',
     },
   ],

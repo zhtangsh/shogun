@@ -42,29 +42,34 @@ export default [
         name: 'overview',
         component: './IndicatorAnalysis/Overview',
       },
-    ],
-  },
-  {
-    path: '/positionAnalysis',
-    name: 'positionAnalysis',
-    icon: 'crown',
-    routes: [
       {
-        path: '/positionAnalysis',
-        redirect: '/positionAnalysis/daily',
-      },
-      {
-        path: '/positionAnalysis/daily',
-        name: 'daily',
-        component: './PositionAnalysis/DailyPositionQuery',
-      },
-      {
-        path: '/positionAnalysis/analysis',
-        name: 'analysis',
-        component: './PositionAnalysis/DailyPositionAnalysis',
+        path: '/indicatorAnalysis/overviewPublic',
+        name: 'overviewPublic',
+        component: './IndicatorAnalysis/OverviewPublic',
       },
     ],
   },
+  // {
+  //   path: '/positionAnalysis',
+  //   name: 'positionAnalysis',
+  //   icon: 'crown',
+  //   routes: [
+  //     {
+  //       path: '/positionAnalysis',
+  //       redirect: '/positionAnalysis/daily',
+  //     },
+  //     {
+  //       path: '/positionAnalysis/daily',
+  //       name: 'daily',
+  //       component: './PositionAnalysis/DailyPositionQuery',
+  //     },
+  //     {
+  //       path: '/positionAnalysis/analysis',
+  //       name: 'analysis',
+  //       component: './PositionAnalysis/DailyPositionAnalysis',
+  //     },
+  //   ],
+  // },
   {
     path: '/',
     redirect: '/welcome',

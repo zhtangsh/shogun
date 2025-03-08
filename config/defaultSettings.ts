@@ -15,7 +15,7 @@ const Settings: ProLayoutProps & {
   fixedHeader: false,
   fixSiderbar: false,
   colorWeak: false,
-  title: 'Shogun前台管理系统',
+  title: 'TINY',
   pwa: true,
   logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
   iconfontUrl: '',

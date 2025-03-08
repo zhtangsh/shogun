@@ -12,6 +12,9 @@ export async function indicatorConfigListUsingGet(
     `${BACKEND_URL}/api/v1/research/indicator/config/list`,
     {
       method: 'GET',
+      params: {
+        ...params,
+      },
       ...(options || {}),
     },
   );
