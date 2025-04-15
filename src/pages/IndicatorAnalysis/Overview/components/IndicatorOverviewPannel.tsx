@@ -80,7 +80,7 @@ const IndicatorOverviewPannel: React.FC<IndicatorOverviewPannelProp> = (props) =
     });
   };
   const handleDownload = () => {
-    const url = `${window.API.BACKEND_URL}/api/v1/research/indicator/excel?startDate=${queryParam.startDate}&endDate=${queryParam.endDate}&tab=`;
+    const url = `${window.API.BACKEND_URL}/api/v1/research/indicator/excel?startDate=${queryParam.startDate}&endDate=${queryParam.endDate}&tabGroup=${props.tagGroup}`;
     // 直接通过浏览器行为下载（无需处理响应）
     const link = document.createElement('a');
     link.href = url;
