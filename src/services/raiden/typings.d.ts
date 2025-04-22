@@ -185,4 +185,83 @@ declare namespace API {
     /** tabGroup */
     tabGroup?: number;
   };
+  type indicatorCategoryListUsingGETParams = {
+    /** 分组列 */
+    categoryCol?: string;
+    /** x列 */
+    dateCol?: string;
+    /** 结束时间 */
+    endDate?: string;
+    /** 过滤的字段 */
+    filterCols?: string;
+    /** 过滤的值 */
+    filterValues?: string;
+    /** schema名称 */
+    schemaName?: string;
+    /** 开始时间 */
+    startDate?: string;
+    /** tableName */
+    tableName?: string;
+  };
+  type indicatorConfigListUsingGET1Params = {
+    /** tabGroup */
+    tabGroup?: number;
+  };
+
+  type IndicatorConfigV2Dto = {
+    categoryCol?: string;
+    categoryKey?: string;
+    categoryZhName?: string;
+    dateCol?: string;
+    filterCols?: string;
+    filterValues?: string;
+    idx?: string;
+    plotTableName?: string;
+    plotType?: string;
+    schemaName?: string;
+    selectCols?: string;
+    tab?: string;
+    tabIdx?: string;
+    tabName?: string;
+    tableName?: string;
+    xcol?: string;
+    xdirection?: string;
+    xvalueType?: string;
+    ycol?: string;
+  };
+
+  type indicatorDataListUsingGET1Params = {
+    /** 分组列 */
+    categoryCol?: string;
+    /** 分组键值 */
+    categoryKey?: string;
+    /** 日期列 */
+    dateCol?: string;
+    /** 结束时间 */
+    endDate?: string;
+    /** 过滤的字段 */
+    filterCols?: string;
+    /** 过滤的值 */
+    filterValues?: string;
+    /** schema名称 */
+    schemaName?: string;
+    /** 选取的字段 */
+    selectCols?: string;
+    /** 开始时间 */
+    startDate?: string;
+    /** tableName */
+    tableName?: string;
+    /** x列 */
+    xCol?: string;
+    /** x数据类型 */
+    xValueType?: string;
+    /** x列 */
+    yCol?: string;
+  };
+
+  type IndicatorDataV2Dto = {
+    categoryValue?: string;
+    x?: any;
+    y?: number;
+  };
 }

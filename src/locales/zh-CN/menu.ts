@@ -55,4 +55,5 @@ export default {
   'menu.indicatorAnalysis': '固收指标监控',
   'menu.indicatorAnalysis.overview': '我的指标',
   'menu.indicatorAnalysis.overviewPublic': '重点指标',
+  'menu.indicatorAnalysis.overviewV2': '我的指标TTM',
 };

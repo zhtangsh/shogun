@@ -47,6 +47,11 @@ export default [
         name: 'overviewPublic',
         component: './IndicatorAnalysis/OverviewPublic',
       },
+      {
+        path: '/indicatorAnalysis/overviewV2',
+        name: 'overviewV2',
+        component: './IndicatorAnalysisV2/Overview',
+      },
     ],
   },
   // {
