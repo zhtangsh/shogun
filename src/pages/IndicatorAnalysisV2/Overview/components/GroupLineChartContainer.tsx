@@ -12,7 +12,7 @@ const GroupLineChartContainerV2: React.FC<GroupLineChartContainerV2Props> = (pro
   const buildChart = () => {
     return props.linechartConfig.map((val) => {
       return (
-        <Col key={val.categoryCol + val.categoryKey} span={12}>
+        <Col key={`${val.tab}_${val.tabIdx}_${val.idx}`} span={12}>
           <Card>
             <IndicatorLineChartV2
               linechartConfig={val}

@@ -209,7 +209,7 @@ declare namespace API {
   };
 
   type IndicatorConfigV2Dto = {
-    categoryCol?: string;
+    categoryCol: string;
     categoryKey?: string;
     categoryZhName?: string;
     dateCol?: string;
@@ -220,8 +220,8 @@ declare namespace API {
     plotType?: string;
     schemaName?: string;
     selectCols?: string;
-    tab?: string;
-    tabIdx?: string;
+    tab: string;
+    tabIdx: string;
     tabName?: string;
     tableName?: string;
     xcol?: string;
