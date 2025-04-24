@@ -15,7 +15,7 @@ const IndicatorOverviewPannelV2: React.FC<IndicatorOverviewPannelV2Prop> = (prop
     Record<string, API.IndicatorConfigV2Dto[]>
   >({});
   const [queryParam, setQueryParam] = useState({
-    startDate: moment('2023-01-01').format('YYYY-MM-DD'),
+    startDate: moment('2024-01-01').format('YYYY-MM-DD'),
     endDate: moment().format('YYYY-MM-DD'),
   });
   const [tabKeyList, setTabKeyList] = useState<string[]>([]);
@@ -105,7 +105,7 @@ const IndicatorOverviewPannelV2: React.FC<IndicatorOverviewPannelV2Prop> = (prop
                     <Form.Item
                       name="dateRange"
                       label="日期"
-                      initialValue={[moment('2023-01-01'), moment()]}
+                      initialValue={[moment('2024-01-01'), moment()]}
                     >
                       <RangePicker />
                     </Form.Item>

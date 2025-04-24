@@ -22,8 +22,8 @@ const IndicatorLineChartV2: React.FC<IndicatorLineChartV2Props> = (props) => {
     ...(props.linechartConfig.xdirection === 'desc' && {
       scale: {
         x: {
-          domain: [176, 0],
-          tickMethod: () => [176, 150, 125, 100, 75, 50, 25, 0],
+          domain: [120, 0],
+          tickMethod: () => [120, 100, 80, 60, 40, 20, 0],
         },
       },
     }),
@@ -37,7 +37,6 @@ const IndicatorLineChartV2: React.FC<IndicatorLineChartV2Props> = (props) => {
       },
     },
   };
-  console.log(config);
 
   // const filterCompleteDateData = (data_list: API.IndicatorDataV2Dto[], label_list: string[]) => {
   //   if (label_list.length === 0) return [];
@@ -84,11 +83,11 @@ const IndicatorLineChartV2: React.FC<IndicatorLineChartV2Props> = (props) => {
       categoryKey: props.linechartConfig.categoryKey,
     };
     const result = await indicatorDataListUsingGet1(queryParams);
-    const tmp = [];
+    let tmp: API.IndicatorDataV2Dto[] = [];
     if (result.status === 0 && result.res) {
       tmp.push(...result.res);
+      tmp = tmp.filter((v) => v.x <= 120);
     }
-    console.log(tmp);
     setData(tmp);
   };
 

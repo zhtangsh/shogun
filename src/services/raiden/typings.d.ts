@@ -215,7 +215,7 @@ declare namespace API {
     dateCol?: string;
     filterCols?: string;
     filterValues?: string;
-    idx?: string;
+    idx: string;
     plotTableName?: string;
     plotType?: string;
     schemaName?: string;
@@ -260,8 +260,8 @@ declare namespace API {
   };
 
   type IndicatorDataV2Dto = {
-    categoryValue?: string;
-    x?: any;
-    y?: number;
+    categoryValue: string;
+    x: any;
+    y: number;
   };
 }
