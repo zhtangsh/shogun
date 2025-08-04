@@ -52,6 +52,11 @@ export default [
         name: 'overviewV2',
         component: './IndicatorAnalysisV2/Overview',
       },
+      {
+        path: '/indicatorAnalysis/overviewCta',
+        name: 'overviewCta',
+        component: './IndicatorAnalysis/OverviewCta',
+      },
     ],
   },
   // {
