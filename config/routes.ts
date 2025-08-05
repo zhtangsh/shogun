@@ -66,7 +66,12 @@ export default [
     routes: [
       {
         path: '/futureTradeAnalysis',
-        redirect: '/futureTradeAnalysis/futurePosition',
+        redirect: '/futureTradeAnalysis/overviewCta',
+      },
+      {
+        path: '/futureTradeAnalysis/overviewCta',
+        name: 'overviewCta',
+        component: './IndicatorAnalysis/OverviewCta',
       },
       {
         path: '/futureTradeAnalysis/futurePosition',

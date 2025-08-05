@@ -49,7 +49,8 @@ export default {
   'menu.editor.flow': '流程编辑器',
   'menu.editor.mind': '脑图编辑器',
   'menu.editor.koni': '拓扑编辑器',
-  'menu.futureTradeAnalysis': '交易分析',
+  'menu.futureTradeAnalysis': 'CTA',
+  'menu.futureTradeAnalysis.overviewCta': '回测跟踪',
   'menu.futureTradeAnalysis.futurePosition': '期货日度持仓查询',
   'menu.futureTradeAnalysis.futureTrade': '期货日度交易查询',
   'menu.positionAnalysis.analysis': '持仓分析',
@@ -57,5 +58,4 @@ export default {
   'menu.indicatorAnalysis.overview': '我的指标',
   'menu.indicatorAnalysis.overviewPublic': '重点指标',
   'menu.indicatorAnalysis.overviewV2': '我的指标TTM',
-  'menu.indicatorAnalysis.overviewCta': 'cta指标',
 };
