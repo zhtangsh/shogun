@@ -295,7 +295,7 @@ declare namespace API {
     /** 持仓成本 */
     positionCost?: number;
     /** 某标志位 */
-    positionDate?: 'THOST_FTDC_PSD_Today' | 'THOST_FTDC_PSD_History';
+    positionDate: 'THOST_FTDC_PSD_Today' | 'THOST_FTDC_PSD_History';
     /** 持仓盈亏 */
     positionProfit?: number;
     /** 上次占用的保证金 */
@@ -334,5 +334,78 @@ declare namespace API {
     sortOrder?: string;
     /** 记录日期 */
     tradingDay?: string;
+  };
+
+  type ctpTradeDataListUsingGETParams = {
+    /** 记录日期 */
+    tradingDay?: string;
+  };
+
+  type CtpTradeDataDto = {
+    /** 经纪公司代码 */
+    brokerId?: string;
+    /** 业务单元 */
+    businessUnit?: string;
+    /** 结算会员编号 */
+    clearingPartID?: string;
+    /** 客户代码 */
+    clientID?: string;
+    /** 买卖方向 */
+    direction?: string;
+    /** 交易所代码 */
+    exchangeID?: string;
+    /** 合约在交易所的代码 */
+    exchangeInstID?: string;
+    /** 组合投机套保标志 */
+    hedgeFlag?: string;
+    /** 唯一ID */
+    id?: string;
+    /** 合约代码 */
+    instrumentID: string;
+    /** 投资单元代码 */
+    investUnitID?: string;
+    /** 投资者代码 */
+    investorID?: string;
+    /** 组合开平标志 */
+    offsetFlag?: string;
+    /** 本地报单编号 */
+    orderLocalID?: string;
+    /** 报单引用 */
+    orderRef?: string;
+    /** 报单编号 */
+    orderSysID?: string;
+    /** 会员代码 */
+    participantID?: string;
+    /** 价格 */
+    price?: number;
+    /** 成交价来源 */
+    priceSource?: string;
+    /** 保留的无效字段 */
+    reserve1?: string;
+    /** 序号 */
+    sequenceNo?: string;
+    /** 结算编号 */
+    settlementID?: string;
+    /** 成交时期 */
+    tradeDate: string;
+    /** 成交编号 */
+    tradeID?: string;
+    /** 成交来源 */
+    tradeSource?: string;
+    /** 成交时间 */
+    tradeTime: string;
+    /** 成交类型 */
+    tradeType?: string;
+    /** 交易所交易员代码 */
+    traderID?: string;
+    /** 交易日 */
+    tradingDay?: string;
+    /** 交易角色 */
+    tradingRole?: string;
+    /** 用户代码 */
+    userID?: string;
+    /** 数量 */
+    volume?: string;
+    dt?: string;
   };
 }

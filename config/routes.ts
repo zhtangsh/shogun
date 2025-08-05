@@ -73,11 +73,11 @@ export default [
         name: 'futurePosition',
         component: './FutureTradeAnalysis/FuturePositionQuery',
       },
-      // {
-      //   path: '/futureTradeAnalysis/analysis',
-      //   name: 'analysis',
-      //   component: './PositionAnalysis/DailyPositionAnalysis',
-      // },
+      {
+        path: '/futureTradeAnalysis/futureTrade',
+        name: 'futureTrade',
+        component: './FutureTradeAnalysis/FutureTradeQuery',
+      },
     ],
   },
   {

@@ -52,6 +52,11 @@ const FuturePositionProTable: React.FC = () => {
       search: false,
     },
     {
+      title: '交易所',
+      dataIndex: 'exchangeId',
+      search: false,
+    },
+    {
       title: '总仓位',
       dataIndex: 'position',
       search: false,
@@ -94,8 +99,10 @@ const FuturePositionProTable: React.FC = () => {
     if (result.status === 0 && result.res) {
       data.push(...result.res);
     }
-    data.sort((a, b) =>
-      a.instrumentId < b.instrumentId ? -1 : a.instrumentId > b.instrumentId ? 1 : 0,
+    data.sort(
+      (a, b) =>
+        a.instrumentId.localeCompare(b.instrumentId) ||
+        a.positionDate.localeCompare(b.positionDate),
     );
     return {
       data: data,

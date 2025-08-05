@@ -44,3 +44,21 @@ export async function ctpPositionPageUsingGet(
     },
   );
 }
+
+/** 获取ctp中的交易数据完整列表 获取ctp中的交易数据完整列表 GET /api/v1/future/ctp/tradeData/list */
+export async function ctpTradeDataListUsingGet(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.ctpTradeDataListUsingGETParams,
+  options?: { [key: string]: any },
+) {
+  return request<API.CommonResponse<API.CtpTradeDataDto[]>>(
+    `${BACKEND_URL}/api/v1/future/ctp/tradeData/list`,
+    {
+      method: 'GET',
+      params: {
+        ...params,
+      },
+      ...(options || {}),
+    },
+  );
+}
