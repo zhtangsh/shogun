@@ -59,27 +59,27 @@ export default [
       },
     ],
   },
-  // {
-  //   path: '/positionAnalysis',
-  //   name: 'positionAnalysis',
-  //   icon: 'crown',
-  //   routes: [
-  //     {
-  //       path: '/positionAnalysis',
-  //       redirect: '/positionAnalysis/daily',
-  //     },
-  //     {
-  //       path: '/positionAnalysis/daily',
-  //       name: 'daily',
-  //       component: './PositionAnalysis/DailyPositionQuery',
-  //     },
-  //     {
-  //       path: '/positionAnalysis/analysis',
-  //       name: 'analysis',
-  //       component: './PositionAnalysis/DailyPositionAnalysis',
-  //     },
-  //   ],
-  // },
+  {
+    path: '/futureTradeAnalysis',
+    name: 'futureTradeAnalysis',
+    icon: 'crown',
+    routes: [
+      {
+        path: '/futureTradeAnalysis',
+        redirect: '/futureTradeAnalysis/futurePosition',
+      },
+      {
+        path: '/futureTradeAnalysis/futurePosition',
+        name: 'futurePosition',
+        component: './FutureTradeAnalysis/FuturePositionQuery',
+      },
+      // {
+      //   path: '/futureTradeAnalysis/analysis',
+      //   name: 'analysis',
+      //   component: './PositionAnalysis/DailyPositionAnalysis',
+      // },
+    ],
+  },
   {
     path: '/',
     redirect: '/welcome',

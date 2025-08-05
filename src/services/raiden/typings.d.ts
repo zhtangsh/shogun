@@ -264,4 +264,75 @@ declare namespace API {
     x: any;
     y: number;
   };
+
+  type PositionDto = {
+    /** 平仓金额 */
+    closeAmount?: number;
+    /** 平仓盈亏 */
+    closeProfit?: number;
+    /** 平仓量 */
+    closeVolume?: number;
+    /** 手续费 */
+    commission?: number;
+    /** 交易所代码 */
+    exchangeId?: string;
+    /** 唯一ID */
+    id?: string;
+    /** 合约代码 */
+    instrumentId: string;
+    /** 多头冻结 */
+    longFrozen?: number;
+    /** 多头开仓冻结金额 */
+    longFrozenAmount?: number;
+    /** 开仓金额 */
+    openAmount?: number;
+    /** 开仓量 */
+    openVolume?: number;
+    /** 持仓多空方向 */
+    posiDirection?: 'THOST_FTDC_PD_Net' | 'THOST_FTDC_PD_Long' | 'THOST_FTDC_PD_Short';
+    /** 总仓位 */
+    position?: number;
+    /** 持仓成本 */
+    positionCost?: number;
+    /** 某标志位 */
+    positionDate?: 'THOST_FTDC_PSD_Today' | 'THOST_FTDC_PSD_History';
+    /** 持仓盈亏 */
+    positionProfit?: number;
+    /** 上次占用的保证金 */
+    preMargin?: number;
+    /** 上次结算价 */
+    preSettlementPrice?: number;
+    /** 本次结算价 */
+    settlementPrice?: number;
+    /** 空头冻结 */
+    shortFrozen?: number;
+    /** 空头开仓冻结金额 */
+    shortFrozenAmount?: number;
+    /** 今仓 */
+    todayPosition?: number;
+    /** 交易日 */
+    tradingDay?: string;
+    /** 持仓成本 */
+    useMargin?: number;
+    /** 昨仓 */
+    ydPosition?: number;
+  };
+
+  type ctpPositionListUsingGETParams = {
+    /** 记录日期 */
+    tradingDay?: string;
+  };
+
+  type ctpPositionPageUsingGETParams = {
+    /** 当前页码 */
+    pageNum?: number;
+    /** 每页大小 */
+    pageSize?: number;
+    /** 排序字段 */
+    sortField?: string;
+    /** 排序方向 */
+    sortOrder?: string;
+    /** 记录日期 */
+    tradingDay?: string;
+  };
 }
