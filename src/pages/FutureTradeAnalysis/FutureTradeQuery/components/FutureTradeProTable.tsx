@@ -52,11 +52,6 @@ const FutureTradeProTable: React.FC = () => {
       },
     },
     {
-      title: '交易时间',
-      dataIndex: 'dt',
-      search: false,
-    },
-    {
       title: '买卖方向',
       dataIndex: 'direction',
       valueEnum: directionEnum,
@@ -77,6 +72,11 @@ const FutureTradeProTable: React.FC = () => {
     {
       title: '数量',
       dataIndex: 'volume',
+      search: false,
+    },
+    {
+      title: '交易时间',
+      dataIndex: 'dt',
       search: false,
     },
   ];
