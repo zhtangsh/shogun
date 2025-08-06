@@ -52,11 +52,6 @@ export default [
         name: 'overviewV2',
         component: './IndicatorAnalysisV2/Overview',
       },
-      {
-        path: '/indicatorAnalysis/overviewCta',
-        name: 'overviewCta',
-        component: './IndicatorAnalysis/OverviewCta',
-      },
     ],
   },
   {
@@ -82,6 +77,11 @@ export default [
         path: '/futureTradeAnalysis/futureTrade',
         name: 'futureTrade',
         component: './FutureTradeAnalysis/FutureTradeQuery',
+      },
+      {
+        path: '/futureTradeAnalysis/futureNameCodePnl',
+        name: 'futureNameCodePnl',
+        component: './FutureTradeAnalysis/FutureNameCodePnlQuery',
       },
     ],
   },

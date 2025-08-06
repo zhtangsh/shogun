@@ -408,4 +408,20 @@ declare namespace API {
     volume?: string;
     dt?: string;
   };
+
+  type nameCodePnlUsingGETParams = {
+    /** 记录日期 */
+    recordDate?: string;
+  };
+
+  type FutureNameCodePnlDto = {
+    /** 唯一ID */
+    id: string;
+    /** 品种代码 */
+    nameCode: string;
+    /** 损益 */
+    pnl: number;
+    /** 日期 */
+    recordDate: string;
+  };
 }

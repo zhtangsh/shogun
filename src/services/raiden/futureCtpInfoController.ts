@@ -62,3 +62,21 @@ export async function ctpTradeDataListUsingGet(
     },
   );
 }
+
+/** 获取nameCode损益完整列表 获取nameCode损益完整列表 GET /api/v1/future/ctp/nameCodePnl/list */
+export async function nameCodePnlUsingGet(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.nameCodePnlUsingGETParams,
+  options?: { [key: string]: any },
+) {
+  return request<API.CommonResponse<API.FutureNameCodePnlDto[]>>(
+    `${BACKEND_URL}/api/v1/future/ctp/nameCodePnl/list`,
+    {
+      method: 'GET',
+      params: {
+        ...params,
+      },
+      ...(options || {}),
+    },
+  );
+}
