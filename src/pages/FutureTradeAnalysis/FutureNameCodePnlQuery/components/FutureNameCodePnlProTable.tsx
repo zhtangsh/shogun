@@ -26,6 +26,12 @@ const FutureNameCodePnlProTable: React.FC = () => {
       sorter: (a, b) => a.pnl - b.pnl, // 设置 sorter 函数
       search: false,
     },
+    {
+      title: '累积损益',
+      dataIndex: 'cumPnl',
+      sorter: (a, b) => a.cumPnl - b.cumPnl, // 设置 sorter 函数
+      search: false,
+    },
   ];
   const getPositionData = async (params: any) => {
     const queryParams = {

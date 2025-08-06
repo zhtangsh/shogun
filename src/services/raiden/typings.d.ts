@@ -423,5 +423,7 @@ declare namespace API {
     pnl: number;
     /** 日期 */
     recordDate: string;
+    /** 累积损益 */
+    cumPnl: number;
   };
 }
