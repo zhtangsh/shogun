@@ -1,4 +1,4 @@
-import { ctpPositionListUsingGet } from '@/services/raiden/futureCtpInfoController';
+import { netPositionListUsingGet } from '@/services/raiden/futureCtpInfoController';
 import { ActionType, ProColumns, ProTable } from '@ant-design/pro-components';
 import moment from 'moment';
 import React, { useRef } from 'react';
@@ -16,15 +16,7 @@ const FuturePositionProTable: React.FC = () => {
       text: '空',
     },
   };
-  const positionDateEnum = {
-    THOST_FTDC_PSD_Today: {
-      text: '今仓',
-    },
-    THOST_FTDC_PSD_History: {
-      text: '昨仓',
-    },
-  };
-  const columns: ProColumns<API.PositionDto>[] = [
+  const columns: ProColumns<API.FutureNetPositionDto>[] = [
     {
       title: '合约代码',
       dataIndex: 'instrumentId',
@@ -46,12 +38,6 @@ const FuturePositionProTable: React.FC = () => {
       search: false,
     },
     {
-      title: '持仓日期',
-      dataIndex: 'positionDate',
-      valueEnum: positionDateEnum,
-      search: false,
-    },
-    {
       title: '交易所',
       dataIndex: 'exchangeId',
       search: false,
@@ -60,21 +46,19 @@ const FuturePositionProTable: React.FC = () => {
       title: '总仓位',
       dataIndex: 'position',
       search: false,
+      sorter: (a, b) => a.position - b.position, // 设置 sorter 函数
     },
     {
       title: '平仓盈亏',
       dataIndex: 'closeProfit',
       search: false,
+      sorter: (a, b) => a.closeProfit - b.closeProfit, // 设置 sorter 函数
     },
     {
       title: '持仓盈亏',
       dataIndex: 'positionProfit',
       search: false,
-    },
-    {
-      title: '保证金',
-      dataIndex: 'useMargin',
-      search: false,
+      sorter: (a, b) => a.positionProfit - b.positionProfit, // 设置 sorter 函数
     },
     {
       title: '今日仓位',
@@ -94,16 +78,12 @@ const FuturePositionProTable: React.FC = () => {
       }),
     };
     console.log(queryParams);
-    const result = await ctpPositionListUsingGet(queryParams);
+    const result = await netPositionListUsingGet(queryParams);
     const data = [];
     if (result.status === 0 && result.res) {
       data.push(...result.res);
     }
-    data.sort(
-      (a, b) =>
-        a.instrumentId.localeCompare(b.instrumentId) ||
-        a.positionDate.localeCompare(b.positionDate),
-    );
+    data.sort((a, b) => a.instrumentId.localeCompare(b.instrumentId));
     return {
       data: data,
       success: true,
@@ -111,7 +91,7 @@ const FuturePositionProTable: React.FC = () => {
   };
   return (
     <>
-      <ProTable<API.PositionDto>
+      <ProTable<API.FutureNetPositionDto>
         columns={columns}
         actionRef={actionRef}
         request={getPositionData}

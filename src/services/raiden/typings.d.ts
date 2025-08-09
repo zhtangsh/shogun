@@ -426,4 +426,41 @@ declare namespace API {
     /** 累积损益 */
     cumPnl: number;
   };
+
+  type FutureNetPositionDto = {
+    /** 平仓金额 */
+    closeAmount?: number;
+    /** 平仓盈亏 */
+    closeProfit: number;
+    /** 平仓量 */
+    closeVolume?: number;
+    /** 手续费 */
+    commission?: number;
+    /** 交易所代码 */
+    exchangeId?: string;
+    /** 唯一ID */
+    id?: string;
+    /** 合约代码 */
+    instrumentId: string;
+    /** 开仓金额 */
+    openAmount?: number;
+    /** 开仓量 */
+    openVolume?: number;
+    /** 持仓多空方向 */
+    posiDirection?: 'THOST_FTDC_PD_Net' | 'THOST_FTDC_PD_Long' | 'THOST_FTDC_PD_Short';
+    /** 总仓位 */
+    position: number;
+    /** 持仓盈亏 */
+    positionProfit: number;
+    /** 上次结算价 */
+    preSettlementPrice?: number;
+    /** 本次结算价 */
+    settlementPrice?: number;
+    /** 今仓 */
+    todayPosition?: number;
+    /** 交易日 */
+    tradingDay: string;
+    /** 昨仓 */
+    ydPosition?: number;
+  };
 }
