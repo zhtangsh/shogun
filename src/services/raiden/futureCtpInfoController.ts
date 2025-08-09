@@ -24,7 +24,7 @@ export async function ctpPositionListUsingGet(
 /** 获取ctp中的日度仓位完整列表 获取ctp中的日度仓位完整列表 GET /api/v1/future/ctp/position/list */
 export async function netPositionListUsingGet(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.netPositionListUsingGETParams,
+  params: API.ctpPositionListUsingGETParams,
   options?: { [key: string]: any },
 ) {
   return request<API.CommonResponse<API.FutureNetPositionDto[]>>(
@@ -70,6 +70,17 @@ export async function nameCodePnlUsingGet(
       params: {
         ...params,
       },
+      ...(options || {}),
+    },
+  );
+}
+
+/** 获取策略收益曲线 获取策略收益曲线 GET /api/v1/future/ctp/strategy/pnl */
+export async function strategyPnlUsingGet(options?: { [key: string]: any }) {
+  return request<API.CommonResponse<API.StrategyPnlDto[]>>(
+    `${BACKEND_URL}/api/v1/future/ctp/strategy/pnl`,
+    {
+      method: 'GET',
       ...(options || {}),
     },
   );

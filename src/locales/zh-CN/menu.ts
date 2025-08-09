@@ -54,6 +54,7 @@ export default {
   'menu.futureTradeAnalysis.futurePosition': '期货日度持仓查询',
   'menu.futureTradeAnalysis.futureTrade': '期货日度交易查询',
   'menu.futureTradeAnalysis.futureNameCodePnl': '品种代码pnl分析',
+  'menu.futureTradeAnalysis.strategyPnl': '策略收益分析',
   'menu.positionAnalysis.analysis': '持仓分析',
   'menu.indicatorAnalysis': '固收指标监控',
   'menu.indicatorAnalysis.overview': '我的指标',

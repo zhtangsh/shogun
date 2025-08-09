@@ -83,6 +83,11 @@ export default [
         name: 'futureNameCodePnl',
         component: './FutureTradeAnalysis/FutureNameCodePnlQuery',
       },
+      {
+        path: '/futureTradeAnalysis/strategyPnl',
+        name: 'strategyPnl',
+        component: './FutureTradeAnalysis/FutureStrategyPnlOverview',
+      },
     ],
   },
   {

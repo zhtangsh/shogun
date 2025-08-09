@@ -463,4 +463,16 @@ declare namespace API {
     /** 昨仓 */
     ydPosition?: number;
   };
+  type StrategyPnlDto = {
+    /** 累积损益 */
+    cumPnl: number;
+    /** 收益率 */
+    npv: number;
+    /** 损益 */
+    pnl: number;
+    /** 策略名称 */
+    strategyName: string;
+    /** 交易日 */
+    tradingDay: string;
+  };
 }
