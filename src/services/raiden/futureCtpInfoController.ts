@@ -85,3 +85,21 @@ export async function strategyPnlUsingGet(options?: { [key: string]: any }) {
     },
   );
 }
+
+/** 获取品种敞口完整列表 获取品种敞口完整列表 GET /api/v1/future/ctp/nameCodeExposure/list */
+export async function nameCodeExposureUsingGet(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.nameCodeExposureUsingGETParams,
+  options?: { [key: string]: any },
+) {
+  return request<API.CommonResponse<API.FutureNameCodeExposureDto[]>>(
+    `${BACKEND_URL}/api/v1/future/ctp/nameCodeExposure/list`,
+    {
+      method: 'GET',
+      params: {
+        ...params,
+      },
+      ...(options || {}),
+    },
+  );
+}

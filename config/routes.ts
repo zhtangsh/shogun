@@ -88,6 +88,11 @@ export default [
         name: 'strategyPnl',
         component: './FutureTradeAnalysis/FutureStrategyPnlOverview',
       },
+      {
+        path: '/futureTradeAnalysis/futureNameCodeExposure',
+        name: 'futureNameCodeExposure',
+        component: './FutureTradeAnalysis/FutureNameCodeExposureQuery',
+      },
     ],
   },
   {

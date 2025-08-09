@@ -475,4 +475,19 @@ declare namespace API {
     /** 交易日 */
     tradingDay: string;
   };
+
+  type nameCodeExposureUsingGETParams = {
+    /** 记录日期 */
+    recordDate?: string;
+  };
+  type FutureNameCodeExposureDto = {
+    /** 敞口 */
+    exposure: number;
+    /** 唯一ID */
+    id: string;
+    /** 品种代码 */
+    nameCode: string;
+    /** 日期 */
+    tradingDay: string;
+  };
 }
