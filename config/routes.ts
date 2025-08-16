@@ -69,6 +69,11 @@ export default [
         component: './IndicatorAnalysis/OverviewCta',
       },
       {
+        path: '/futureTradeAnalysis/futureExecutionPreview',
+        name: 'futureExecutionPreview',
+        component: './FutureTradeAnalysis/FutureExecutionPreviewQuery',
+      },
+      {
         path: '/futureTradeAnalysis/futurePosition',
         name: 'futurePosition',
         component: './FutureTradeAnalysis/FuturePositionQuery',

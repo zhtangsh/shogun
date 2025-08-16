@@ -51,6 +51,7 @@ export default {
   'menu.editor.koni': '拓扑编辑器',
   'menu.futureTradeAnalysis': 'CTA',
   'menu.futureTradeAnalysis.overviewCta': '回测跟踪',
+  'menu.futureTradeAnalysis.futureExecutionPreview': '交易执行预览',
   'menu.futureTradeAnalysis.futurePosition': '期货日度持仓查询',
   'menu.futureTradeAnalysis.futureTrade': '期货日度交易查询',
   'menu.futureTradeAnalysis.futureNameCodePnl': '品种收益分析',

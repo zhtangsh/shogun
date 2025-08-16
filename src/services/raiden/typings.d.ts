@@ -498,4 +498,37 @@ declare namespace API {
     /** 损益市值方法 */
     valueMethod?: '总市值' | '策略市值';
   };
+
+  type executionPreviewListUsingGETParams = {
+    /** 交易时段 */
+    tradeHour?: '夜盘' | '早盘九点' | '早盘九点半';
+  };
+
+  type FutureExecutionPreviewDto = {
+    /** 买卖方向 */
+    direction: 'THOST_FTDC_DEN_Buy' | 'THOST_FTDC_DEN_Sell';
+    /** 交易日批次 */
+    dt: string;
+    /** 交易所代码 */
+    exchangeId: string;
+    /** 唯一ID */
+    id: string;
+    /** 合约代码 */
+    instrumentId: string;
+    /** 开平标志 */
+    offset:
+      | 'THOST_FTDC_OFEN_Open'
+      | 'THOST_FTDC_OFEN_Close'
+      | 'THOST_FTDC_OFEN_ForceClose'
+      | 'THOST_FTDC_OFEN_CloseToday'
+      | 'THOST_FTDC_OFEN_CloseYesterday'
+      | 'THOST_FTDC_OFEN_ForceOff'
+      | 'THOST_FTDC_OFEN_LocalForceClose';
+    /** 交易时段 */
+    tradeHour: '夜盘' | '早盘九点' | '早盘九点半';
+    /** 该时段交易批次 */
+    tradeHourOffset: number;
+    /** 执行数量 */
+    volume: number;
+  };
 }
