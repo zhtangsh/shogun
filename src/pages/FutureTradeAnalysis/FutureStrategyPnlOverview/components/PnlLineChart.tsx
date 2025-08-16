@@ -2,7 +2,10 @@ import { strategyPnlUsingGet } from '@/services/raiden/futureCtpInfoController';
 import { Line } from '@ant-design/charts';
 import React, { useEffect, useState } from 'react';
 
-type PnlLineChartProp = any;
+type PnlLineChartProp = {
+  title: string;
+  pnlValueMethod: '总市值' | '策略市值';
+};
 const PnlLineChart: React.FC<PnlLineChartProp> = (props) => {
   const [data, setData] = useState<API.StrategyPnlDto[]>();
   const config = {
@@ -10,7 +13,7 @@ const PnlLineChart: React.FC<PnlLineChartProp> = (props) => {
     yField: 'npv',
     padding: 'auto',
     forceFit: true,
-    title: '策略收益分析',
+    title: props.title,
     connectNulls: true,
     seriesField: 'strategyName',
     colorField: 'strategyName',
@@ -34,7 +37,9 @@ const PnlLineChart: React.FC<PnlLineChartProp> = (props) => {
   };
 
   const fetchData = async () => {
-    const queryParams = {};
+    const queryParams = {
+      valueMethod: props.pnlValueMethod,
+    };
     const result = await strategyPnlUsingGet(queryParams);
     const tmp = [];
     if (result.status === 0 && result.res) {

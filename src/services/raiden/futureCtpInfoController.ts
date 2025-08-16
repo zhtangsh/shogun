@@ -76,11 +76,20 @@ export async function nameCodePnlUsingGet(
 }
 
 /** 获取策略收益曲线 获取策略收益曲线 GET /api/v1/future/ctp/strategy/pnl */
-export async function strategyPnlUsingGet(options?: { [key: string]: any }) {
+export async function strategyPnlUsingGet(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.strategyPnlUsingGETParams,
+  options?: { [key: string]: any },
+) {
   return request<API.CommonResponse<API.StrategyPnlDto[]>>(
     `${BACKEND_URL}/api/v1/future/ctp/strategy/pnl`,
     {
       method: 'GET',
+      params: {
+        // valueMethod has a default value: 总市值
+        valueMethod: '总市值',
+        ...params,
+      },
       ...(options || {}),
     },
   );

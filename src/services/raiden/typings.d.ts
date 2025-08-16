@@ -463,6 +463,7 @@ declare namespace API {
     /** 昨仓 */
     ydPosition?: number;
   };
+
   type StrategyPnlDto = {
     /** 累积损益 */
     cumPnl: number;
@@ -474,6 +475,8 @@ declare namespace API {
     strategyName: string;
     /** 交易日 */
     tradingDay: string;
+    /** 市值 */
+    value: number;
   };
 
   type nameCodeExposureUsingGETParams = {
@@ -489,5 +492,10 @@ declare namespace API {
     nameCode: string;
     /** 日期 */
     tradingDay: string;
+  };
+
+  type strategyPnlUsingGETParams = {
+    /** 损益市值方法 */
+    valueMethod?: '总市值' | '策略市值';
   };
 }
