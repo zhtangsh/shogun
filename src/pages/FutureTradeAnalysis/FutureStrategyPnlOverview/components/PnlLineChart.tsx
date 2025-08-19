@@ -27,6 +27,7 @@ const PnlLineChart: React.FC<PnlLineChartProp> = (props) => {
     },
     legend: {
       color: {
+        itemMarkerSize: 25,
         layout: {
           justifyContent: 'center',
           alignItems: 'center',
