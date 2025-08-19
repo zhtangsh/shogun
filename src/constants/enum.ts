@@ -29,3 +29,9 @@ export const offsetEnum = {
     text: '本地强平',
   },
 } as const;
+
+export const tradeHourEnum = {
+  夜盘: { text: '夜盘' },
+  早盘九点: { text: '早盘九点' },
+  早盘九点半: { text: '早盘九点半' },
+} as const;

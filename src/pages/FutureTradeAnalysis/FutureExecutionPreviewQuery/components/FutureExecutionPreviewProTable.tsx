@@ -1,15 +1,10 @@
-import { directionEnum, offsetEnum } from '@/constants/enum';
+import { directionEnum, offsetEnum, tradeHourEnum } from '@/constants/enum';
 import { executionPreviewListUsingGet } from '@/services/raiden/futureRiskController';
 import { ActionType, ProColumns, ProTable } from '@ant-design/pro-components';
 import React, { useRef } from 'react';
 
 const FutureExecutionPreviewProTable: React.FC = () => {
   const actionRef = useRef<ActionType>();
-  const tradeHourEnum = {
-    夜盘: { text: '夜盘' },
-    早盘九点: { text: '早盘九点' },
-    早盘九点半: { text: '早盘九点半' },
-  };
   const columns: ProColumns<API.FutureExecutionPreviewDto>[] = [
     {
       title: '合约代码',

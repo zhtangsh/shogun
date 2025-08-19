@@ -69,6 +69,11 @@ export default [
         component: './IndicatorAnalysis/OverviewCta',
       },
       {
+        path: '/futureTradeAnalysis/dashboard',
+        name: 'dashboard',
+        component: './FutureTradeAnalysis/FutureTradeDashBoard',
+      },
+      {
         path: '/futureTradeAnalysis/futureExecutionPreview',
         name: 'futureExecutionPreview',
         component: './FutureTradeAnalysis/FutureExecutionPreviewQuery',
