@@ -11,12 +11,29 @@ const FutureStrategyPnlOverview: React.FC = () => {
         <Row gutter={gutter} justify="center">
           <Col span={24}>
             <ProCard>
-              <PnlLineChart title="策略收益分析（基于总市值）" pnlValueMethod="总市值" />
+              <PnlLineChart
+                title="策略收益分析（基于总市值）"
+                yField="npv"
+                pnlValueMethod="总市值"
+              />
             </ProCard>
           </Col>
           <Col span={24}>
             <ProCard>
-              <PnlLineChart title="策略收益分析（基于策略市值）" pnlValueMethod="策略市值" />
+              <PnlLineChart
+                title="策略收益分析（基于策略市值）"
+                yField="npv"
+                pnlValueMethod="策略市值"
+              />
+            </ProCard>
+          </Col>
+          <Col span={24}>
+            <ProCard>
+              <PnlLineChart
+                title="策略收益分析（子策略累计损益）"
+                yField="cumPnl"
+                pnlValueMethod="总市值"
+              />
             </ProCard>
           </Col>
         </Row>

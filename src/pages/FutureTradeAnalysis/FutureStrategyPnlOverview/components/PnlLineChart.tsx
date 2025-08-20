@@ -4,13 +4,14 @@ import React, { useEffect, useState } from 'react';
 
 type PnlLineChartProp = {
   title: string;
+  yField: string;
   pnlValueMethod: '总市值' | '策略市值';
 };
 const PnlLineChart: React.FC<PnlLineChartProp> = (props) => {
   const [data, setData] = useState<API.StrategyPnlDto[]>();
   const config = {
     xField: 'tradingDay',
-    yField: 'npv',
+    yField: props.yField,
     padding: 'auto',
     forceFit: true,
     title: props.title,
