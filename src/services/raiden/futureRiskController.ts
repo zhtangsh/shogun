@@ -20,3 +20,33 @@ export async function executionPreviewListUsingGet(
     },
   );
 }
+
+/** 获取日度总敞口曲线 获取日度总敞口曲线 GET /api/v1/future/risk/nameCode/exposure/cureve */
+export async function dailyExposureCurveUsingGet(options?: { [key: string]: any }) {
+  console.log(`${BACKEND_URL}api/v1/future/risk/nameCode/exposure/cureve`);
+  return request<API.CommonResponse<API.FutureExposureCurveDto[]>>(
+    `${BACKEND_URL}/api/v1/future/risk/nameCode/exposure/cureve`,
+    {
+      method: 'GET',
+      ...(options || {}),
+    },
+  );
+}
+
+/** 获取品种敞口预览列表 获取品种敞口预览列表 GET /api/v1/future/risk/nameCode/exposure/preview/list */
+export async function nameCodeUsingGet(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.nameCodeUsingGETParams,
+  options?: { [key: string]: any },
+) {
+  return request<API.CommonResponse<API.NameCodeExposurePreviewDto[]>>(
+    `${BACKEND_URL}/api/v1/future/risk/nameCode/exposure/preview/list`,
+    {
+      method: 'GET',
+      params: {
+        ...params,
+      },
+      ...(options || {}),
+    },
+  );
+}

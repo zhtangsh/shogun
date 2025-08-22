@@ -531,4 +531,27 @@ declare namespace API {
     /** 执行数量 */
     volume: number;
   };
+
+  type nameCodeUsingGETParams = {
+    /** 交易时段 */
+    tradeHour?: '夜盘' | '早盘九点' | '早盘九点半';
+  };
+
+  type NameCodeExposurePreviewDto = {
+    /** 该品种的权重敞口总和 */
+    exposure: number;
+    /** 品种代码，如 RB、CU */
+    nameCode: string;
+    /** 交易时段 */
+    tradeHour: '夜盘' | '早盘九点' | '早盘九点半';
+  };
+
+  type FutureExposureCurveDto = {
+    /** 敞口值 */
+    exposure: number;
+    /** 唯一ID */
+    id: string;
+    /** 交易日 */
+    tradingDay: string;
+  };
 }
