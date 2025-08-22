@@ -1,5 +1,7 @@
 import { indicatorDataListUsingGet } from '@/services/raiden/indicatorController';
 import { DualAxes } from '@ant-design/charts';
+import { LineChartOutlined } from '@ant-design/icons';
+import { Button, Flex, Modal, Row } from 'antd';
 import React, { useEffect, useState } from 'react';
 
 type IndicatorDualAxeChartProp = {
@@ -10,6 +12,8 @@ type IndicatorDualAxeChartProp = {
 const IndicatorDualAxeChart: React.FC<IndicatorDualAxeChartProp> = (props) => {
   const [leftData, setLeftData] = useState<API.IndicatorDataDto[]>();
   const [rightData, setRightData] = useState<API.IndicatorDataDto[]>();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const config = {
     padding: 'auto',
     forceFit: true,
@@ -91,12 +95,39 @@ const IndicatorDualAxeChart: React.FC<IndicatorDualAxeChartProp> = (props) => {
     setRightData(right_tmp);
   };
 
+  const onModalClick = () => {
+    setIsModalOpen(true);
+    console.log('onModalClick');
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   useEffect(() => {
     getIndicatorData();
   }, [props]);
   return (
     <>
-      <DualAxes {...config} />
+      <Row>
+        <Flex>
+          <Button
+            type="primary"
+            shape="circle"
+            icon={<LineChartOutlined />}
+            onClick={onModalClick}
+          />
+        </Flex>
+      </Row>
+      <Row>
+        <DualAxes {...config} />
+      </Row>
+      <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel} width={1500}>
+        <DualAxes {...config} width={1400} height={600} />
+      </Modal>
     </>
   );
 };

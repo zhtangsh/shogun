@@ -1,5 +1,7 @@
 import { indicatorDataListUsingGet } from '@/services/raiden/indicatorController';
 import { Line } from '@ant-design/charts';
+import { LineChartOutlined } from '@ant-design/icons';
+import { Button, Flex, Modal, Row } from 'antd';
 import React, { useEffect, useState } from 'react';
 
 type IndicatorLineChartProp = {
@@ -9,6 +11,7 @@ type IndicatorLineChartProp = {
 };
 const IndicatorLineChart: React.FC<IndicatorLineChartProp> = (props) => {
   const [data, setData] = useState<API.IndicatorDataDto[]>();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const config = {
     xField: 'tday',
     yField: 'value',
@@ -87,13 +90,40 @@ const IndicatorLineChart: React.FC<IndicatorLineChartProp> = (props) => {
     }
     setData(tmp);
   };
+  const onModalClick = () => {
+    setIsModalOpen(true);
+    console.log('onModalClick');
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     getIndicatorData();
   }, [props]);
   return (
     <>
-      <Line {...config} data={data} />
+      <Row>
+        <Flex>
+          <Button
+            type="primary"
+            shape="circle"
+            icon={<LineChartOutlined />}
+            onClick={onModalClick}
+          />
+        </Flex>
+      </Row>
+      <Row>
+        <Line {...config} data={data} />
+      </Row>
+      <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel} width={1500}>
+        <Line {...config} data={data} width={1400} height={600} />
+      </Modal>
     </>
   );
 };

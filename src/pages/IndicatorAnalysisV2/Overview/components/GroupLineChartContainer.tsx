@@ -1,7 +1,7 @@
 import { ProCard } from '@ant-design/pro-components';
 import { Card, Col, Row } from 'antd';
 import React from 'react';
-import IndicatorLineChartV2 from './IndicatorLineChart';
+import IndicatorLineChartV2 from './IndicatorLineChartV2';
 
 type GroupLineChartContainerV2Props = {
   linechartConfig: API.IndicatorConfigV2Dto[];
