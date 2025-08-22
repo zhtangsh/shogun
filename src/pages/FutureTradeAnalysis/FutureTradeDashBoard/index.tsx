@@ -273,6 +273,7 @@ const FutureTradeDashBoard: React.FC = () => {
                       : '--'
                   } // 格式化时间字符串
                   prefix={<SyncOutlined />}
+                  valueStyle={{ fontSize: '16px' }}
                 />
               </Col>
             </Row>
