@@ -112,3 +112,20 @@ export async function nameCodeExposureUsingGet(
     },
   );
 }
+
+/** 获取总收益率曲线 获取总收益率曲线 GET /api/v1/future/ctp/net/pnl */
+export async function netPnlUsingGet(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.netPnlUsingGETParams,
+  options?: { [key: string]: any },
+) {
+  return request<API.CommonResponse<API.NetPnlDto[]>>(`${BACKEND_URL}/api/v1/future/ctp/net/pnl`, {
+    method: 'GET',
+    params: {
+      // valueMethod has a default value: 总市值
+      valueMethod: '总市值',
+      ...params,
+    },
+    ...(options || {}),
+  });
+}

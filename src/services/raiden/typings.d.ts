@@ -554,4 +554,30 @@ declare namespace API {
     /** 交易日 */
     tradingDay: string;
   };
+  type netPnlUsingGETParams = {
+    /** 损益市值方法 */
+    valueMethod?: '总市值' | '策略市值';
+  };
+  type NetPnlDto = {
+    /** 累积损益 */
+    cumPnl: number;
+    /** 净值 */
+    npv: number;
+    /** 当日损益 */
+    pnl: number;
+    /** 收益率 */
+    r: number;
+    /** 交易日 */
+    tradingDay: string;
+    /** 市值 */
+    value: number;
+  };
+  type AccountInfoDto = {
+    accountId: string;
+    available: number;
+    balance: number;
+    currMargin: number;
+    sourceSystemCode: string;
+    updateTime: string;
+  };
 }

@@ -1,42 +1,31 @@
 import { directionEnum, offsetEnum, tradeHourEnum } from '@/constants/enum';
-import { strategyPnlUsingGet } from '@/services/raiden/futureCtpInfoController';
+import { netPnlUsingGet, strategyPnlUsingGet } from '@/services/raiden/futureCtpInfoController';
 import { executionPreviewListUsingGet } from '@/services/raiden/futureRiskController';
+import { getAccountInfoUsingGet } from '@/services/raiden/futureTradingClientInfoController';
 import { Line } from '@ant-design/charts';
-import { DollarOutlined, FundOutlined, RiseOutlined } from '@ant-design/icons';
+import {
+  DollarOutlined,
+  FundOutlined,
+  PercentageOutlined,
+  RiseOutlined,
+  SyncOutlined,
+} from '@ant-design/icons';
 import { ProCard, ProColumns, ProTable } from '@ant-design/pro-components';
-import { Card, Col, Divider, Row, Statistic } from 'antd';
+import { Card, Col, Row, Statistic } from 'antd';
 import React, { useEffect, useState } from 'react';
 
-// 定义数据类型
-interface AccountSummary {
-  totalValue: number; // 市值
-  cash: number; // 现金
-  margin: number; // 保证金
-  todayPnl: number; // 今日损益
-}
-
 const FutureTradeDashBoard: React.FC = () => {
-  const [accountSummary] = useState<AccountSummary | null>(null);
+  const [accountInfo, setAccountInfo] = useState<API.AccountInfoDto | null>(null);
   const [pnlData, setPnlData] = useState<API.StrategyPnlDto[]>([]);
+  const [netPnlData, setNetPnlData] = useState<API.NetPnlDto[]>([]);
 
-  // 模拟获取账户概要数据的 API 调用
-  const fetchAccountSummary = async () => {
-    // 这里应该替换为真实的 API 调用，例如:
-    // const response = await fetch('/api/account/summary');
-    // const data = await response.json();
-    // return data;
-
-    // 模拟网络延迟和数据
-    return new Promise<AccountSummary>((resolve) => {
-      setTimeout(() => {
-        resolve({
-          totalValue: 125000.5,
-          cash: 45000.0,
-          margin: 80000.0,
-          todayPnl: 2350.75,
-        });
-      }, 1000);
-    });
+  const fetchAccountInfo = async () => {
+    const result = await getAccountInfoUsingGet();
+    if (result.status === 0 && result.res && result.res.accountId) {
+      setAccountInfo(result.res);
+    } else {
+      setAccountInfo(null);
+    }
   };
 
   const fetchPnlData = async () => {
@@ -49,6 +38,18 @@ const FutureTradeDashBoard: React.FC = () => {
       tmp.push(...result.res);
     }
     setPnlData(tmp);
+  };
+
+  const fetchNetPnlData = async () => {
+    const queryParams: API.netPnlUsingGETParams = {
+      valueMethod: '总市值',
+    };
+    const result = await netPnlUsingGet(queryParams);
+    const tmp = [];
+    if (result.status === 0 && result.res) {
+      tmp.push(...result.res);
+    }
+    setNetPnlData(tmp);
   };
 
   const fetchTradeExecutions = async (params: any) => {
@@ -70,8 +71,9 @@ const FutureTradeDashBoard: React.FC = () => {
   // 组件挂载时获取所有数据
   useEffect(() => {
     const loadData = async () => {
-      fetchAccountSummary();
+      fetchAccountInfo();
       fetchPnlData();
+      fetchNetPnlData();
     };
     loadData();
   }, []);
@@ -82,10 +84,34 @@ const FutureTradeDashBoard: React.FC = () => {
     yField: 'npv',
     padding: 'auto',
     forceFit: true,
-    // title: '策略收益率',
     connectNulls: true,
     seriesField: 'strategyName',
     colorField: 'strategyName',
+    theme: 'academy',
+    xAxis: {
+      type: 'date',
+      label: {
+        autoHide: true,
+        autoRotate: false,
+      },
+    },
+    legend: {
+      color: {
+        layout: {
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+        },
+      },
+    },
+  };
+  // 收益率曲线配置
+  const netLineConfig = {
+    xField: 'tradingDay',
+    yField: 'npv',
+    padding: 'auto',
+    forceFit: true,
+    connectNulls: true,
     theme: 'academy',
     xAxis: {
       type: 'date',
@@ -156,6 +182,31 @@ const FutureTradeDashBoard: React.FC = () => {
       search: false,
     },
   ];
+  // 辅助函数：格式化数字，保留两位小数
+  const formatNumber = (value?: number | null) => {
+    if (value === null || value === undefined) return '--';
+    return value.toFixed(2);
+  };
+
+  // 辅助函数：格式化百分比
+  const formatPercentage = (value?: number | null) => {
+    if (value === null || value === undefined) return '--';
+    return `${(value * 100).toFixed(2)}%`; // 假设 marginRatio 是小数形式 (e.g., 0.1234)
+  };
+  // 计算保证金率
+  const calculateMarginRatio = (
+    accountInfo: API.AccountInfoDto | null | undefined,
+  ): number | null => {
+    if (!accountInfo || accountInfo.currMargin === null || accountInfo.available === null) {
+      return null;
+    }
+    const total = accountInfo.currMargin + accountInfo.available;
+    if (total === 0) {
+      return 0; // 避免除以零
+    }
+    return accountInfo.currMargin / total;
+  };
+  const marginRatio = calculateMarginRatio(accountInfo);
 
   return (
     <ProCard title="期货交易总览" extra={<RiseOutlined />} headerBordered>
@@ -163,11 +214,12 @@ const FutureTradeDashBoard: React.FC = () => {
         {/* 账户概要卡片 */}
         <Col xs={24} lg={12}>
           <Card title="账户概要" bordered>
-            <Row gutter={16}>
+            <Row gutter={[16, 16]}>
+              {/* --- 第一行 --- */}
               <Col span={12}>
                 <Statistic
-                  title="当前市值"
-                  value={accountSummary?.totalValue}
+                  title="帐户权益"
+                  value={accountInfo ? formatNumber(accountInfo.balance) : '--'}
                   precision={2}
                   prefix={<DollarOutlined />}
                   valueStyle={{ color: '#3f8600' }}
@@ -176,19 +228,18 @@ const FutureTradeDashBoard: React.FC = () => {
               <Col span={12}>
                 <Statistic
                   title="可用现金"
-                  value={accountSummary?.cash}
+                  value={accountInfo ? formatNumber(accountInfo.available) : '--'}
                   precision={2}
                   prefix={<FundOutlined />}
                   valueStyle={{ color: '#1890ff' }}
                 />
               </Col>
-            </Row>
-            <Divider dashed />
-            <Row gutter={16}>
+
+              {/* --- 第二行 --- */}
               <Col span={12}>
                 <Statistic
                   title="已用保证金"
-                  value={accountSummary?.margin}
+                  value={accountInfo ? formatNumber(accountInfo.currMargin) : '--'}
                   precision={2}
                   prefix={<DollarOutlined />}
                   valueStyle={{ color: '#cf1322' }}
@@ -196,16 +247,32 @@ const FutureTradeDashBoard: React.FC = () => {
               </Col>
               <Col span={12}>
                 <Statistic
-                  title="今日盈亏"
-                  value={accountSummary?.todayPnl}
+                  title="保证金率"
+                  value={formatPercentage(marginRatio)}
                   precision={2}
-                  prefix={<RiseOutlined />}
-                  valueStyle={{
-                    color:
-                      accountSummary?.todayPnl && accountSummary.todayPnl >= 0
-                        ? '#52c41a'
-                        : '#f5222d',
-                  }}
+                  prefix={<PercentageOutlined />}
+                  // valueStyle={{ color: '#faad14' }} // 可以根据需要设置颜色
+                />
+              </Col>
+
+              {/* --- 第三行 --- */}
+              {/* 对于非纯数字信息，可以继续使用 Statistic，但 value 变成字符串 */}
+              <Col span={12}>
+                <Statistic
+                  title="交易客户端"
+                  value={accountInfo?.sourceSystemCode ?? '--'} // 直接显示字符串
+                  // prefix={<DesktopOutlined />} // 可以添加一个图标
+                />
+              </Col>
+              <Col span={12}>
+                <Statistic
+                  title="更新时间"
+                  value={
+                    accountInfo?.updateTime
+                      ? new Date(accountInfo.updateTime).toLocaleString()
+                      : '--'
+                  } // 格式化时间字符串
+                  prefix={<SyncOutlined />}
                 />
               </Col>
             </Row>
@@ -216,6 +283,13 @@ const FutureTradeDashBoard: React.FC = () => {
         <Col xs={24} lg={12}>
           <Card title="策略收益率" bordered>
             <Line {...lineConfig} data={pnlData} />
+          </Card>
+        </Col>
+
+        {/* 全局收益率曲线卡片 */}
+        <Col xs={24} lg={12}>
+          <Card title="总收益率" bordered>
+            <Line {...netLineConfig} data={netPnlData} />
           </Card>
         </Col>
 
