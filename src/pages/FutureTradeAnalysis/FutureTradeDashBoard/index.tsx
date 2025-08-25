@@ -97,6 +97,8 @@ const FutureTradeDashBoard: React.FC = () => {
     },
     legend: {
       color: {
+        itemMarkerSize: 25,
+
         layout: {
           justifyContent: 'center',
           alignItems: 'center',
@@ -280,17 +282,16 @@ const FutureTradeDashBoard: React.FC = () => {
           </Card>
         </Col>
 
-        {/* 收益率曲线卡片 */}
-        <Col xs={24} lg={12}>
-          <Card title="策略收益率" bordered>
-            <Line {...lineConfig} data={pnlData} />
-          </Card>
-        </Col>
-
         {/* 全局收益率曲线卡片 */}
         <Col xs={24} lg={12}>
-          <Card title="总收益率" bordered>
+          <Card title="总净值" bordered>
             <Line {...netLineConfig} data={netPnlData} />
+          </Card>
+        </Col>
+        {/* 收益率曲线卡片 */}
+        <Col xs={24} lg={24}>
+          <Card title="策略收益率" bordered>
+            <Line {...lineConfig} data={pnlData} />
           </Card>
         </Col>
 
