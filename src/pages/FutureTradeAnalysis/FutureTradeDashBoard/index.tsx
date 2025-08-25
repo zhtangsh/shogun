@@ -76,6 +76,13 @@ const FutureTradeDashBoard: React.FC = () => {
       fetchNetPnlData();
     };
     loadData();
+    // 设置每 5 分钟（300000ms）拉取一次账户信息
+    const intervalId = setInterval(() => {
+      fetchAccountInfo();
+    }, 5 * 60 * 1000); // 5分钟
+    return () => {
+      clearInterval(intervalId);
+    };
   }, []);
 
   // 收益率曲线配置
