@@ -45,7 +45,16 @@ const FutureTradeDashBoard: React.FC = () => {
       valueMethod: '总市值',
     };
     const result = await netPnlUsingGet(queryParams);
-    const tmp = [];
+    const tmp = [
+      {
+        tradingDay: '2025-07-25',
+        cumPnl: 0,
+        npv: 1,
+        r: 0,
+        pnl: 0,
+        value: 20000000,
+      },
+    ];
     if (result.status === 0 && result.res) {
       tmp.push(...result.res);
     }
