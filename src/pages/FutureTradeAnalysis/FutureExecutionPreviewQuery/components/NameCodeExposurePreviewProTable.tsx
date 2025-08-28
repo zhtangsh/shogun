@@ -24,13 +24,25 @@ const NameCodeExposurePreviewProTable: React.FC = () => {
       hideInTable: true,
       initialValue: '夜盘',
       valueEnum: tradeHourEnum,
-      search: {
-        transform: (value: any) => value,
-      },
+      search: false,
     },
   ];
-  const fetchData = async (params: any) => {
-    const { tradeHour } = params;
+  const fetchData = async () => {
+    // 获取当前时间
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const currentTime = hours * 100 + minutes; // 简化时间比较，例如 20:40 -> 2040
+
+    let tradeHour: '夜盘' | '早盘九点' | '早盘九点半' = '夜盘';
+
+    if (currentTime >= 2040 || currentTime < 840) {
+      tradeHour = '夜盘';
+    } else if (currentTime >= 840 && currentTime <= 910) {
+      tradeHour = '早盘九点';
+    } else if (currentTime > 910 && currentTime <= 2040) {
+      tradeHour = '早盘九点半';
+    }
     const queryParams = { ...(tradeHour && { tradeHour }) };
 
     const result = await nameCodeUsingGet(queryParams);
@@ -51,6 +63,7 @@ const NameCodeExposurePreviewProTable: React.FC = () => {
         actionRef={actionRef}
         request={fetchData}
         rowKey={(v) => `${v.nameCode}-${v.tradeHour}`}
+        search={false}
         pagination={{
           pageSize: 100,
           onChange: (page) => console.log(page),
