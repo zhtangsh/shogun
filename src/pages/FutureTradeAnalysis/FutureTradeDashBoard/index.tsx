@@ -1,3 +1,4 @@
+import ZoomableChart from '@/components/Chart/ZoomableChart';
 import { directionEnum, offsetEnum, tradeHourEnum } from '@/constants/enum';
 import { netPnlUsingGet, strategyPnlUsingGet } from '@/services/raiden/futureCtpInfoController';
 import { executionPreviewListUsingGet } from '@/services/raiden/futureRiskController';
@@ -300,14 +301,18 @@ const FutureTradeDashBoard: React.FC = () => {
 
         {/* 全局收益率曲线卡片 */}
         <Col xs={24} lg={12}>
-          <Card title="总净值" bordered>
-            <Line {...netLineConfig} data={netPnlData} />
+          <Card title="总净值曲线" bordered>
+            <ZoomableChart title="总净值曲线">
+              <Line {...netLineConfig} data={netPnlData} />
+            </ZoomableChart>
           </Card>
         </Col>
         {/* 收益率曲线卡片 */}
         <Col xs={24} lg={24}>
-          <Card title="策略收益率" bordered>
-            <Line {...lineConfig} data={pnlData} />
+          <Card title="策略收益率曲线" bordered>
+            <ZoomableChart title="策略收益率曲线">
+              <Line {...lineConfig} data={pnlData} />
+            </ZoomableChart>
           </Card>
         </Col>
 

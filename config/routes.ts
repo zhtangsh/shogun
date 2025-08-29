@@ -61,7 +61,7 @@ export default [
     routes: [
       {
         path: '/futureTradeAnalysis',
-        redirect: '/futureTradeAnalysis/overviewCta',
+        redirect: '/futureTradeAnalysis/dashboard',
       },
       {
         path: '/futureTradeAnalysis/overviewCta',
@@ -107,7 +107,7 @@ export default [
   },
   {
     path: '/',
-    redirect: '/welcome',
+    redirect: '/futureTradeAnalysis',
   },
   {
     path: '*',
