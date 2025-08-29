@@ -2,7 +2,7 @@ import { dailyExposureCurveUsingGet } from '@/services/raiden/futureRiskControll
 import { ActionType, ProColumns, ProTable } from '@ant-design/pro-components';
 import React, { useRef } from 'react';
 
-const DailyExposureCurveProTable: React.FC = () => {
+const HistoryDailyExposureCurveProTable: React.FC = () => {
   const actionRef = useRef<ActionType>();
   const columns: ProColumns<API.FutureExposureCurveDto>[] = [
     {
@@ -19,7 +19,7 @@ const DailyExposureCurveProTable: React.FC = () => {
     },
   ];
   const fetchData = async () => {
-    const result = await dailyExposureCurveUsingGet({ bIncludeToday: true });
+    const result = await dailyExposureCurveUsingGet({ bIncludeToday: false });
     const data = [];
     if (result.status === 0 && result.res) {
       data.push(...result.res);
@@ -43,9 +43,9 @@ const DailyExposureCurveProTable: React.FC = () => {
           onChange: (page) => console.log(page),
         }}
         dateFormatter="string"
-        headerTitle="日度总敞口预览"
+        headerTitle="历史日度总敞口"
       />
     </>
   );
 };
-export default DailyExposureCurveProTable;
+export default HistoryDailyExposureCurveProTable;

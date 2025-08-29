@@ -69,7 +69,7 @@ const NameCodeExposurePreviewProTable: React.FC = () => {
           onChange: (page) => console.log(page),
         }}
         dateFormatter="string"
-        headerTitle="日度总敞口预览"
+        headerTitle="当日品种敞口预览"
       />
     </>
   );

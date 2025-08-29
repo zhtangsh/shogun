@@ -56,6 +56,7 @@ const FutureNameCodeExposureProTable: React.FC = () => {
           onChange: (page) => console.log(page),
         }}
         dateFormatter="string"
+        headerTitle="品种敞口分析"
       />
     </>
   );

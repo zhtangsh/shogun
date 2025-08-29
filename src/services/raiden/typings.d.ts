@@ -580,4 +580,8 @@ declare namespace API {
     sourceSystemCode: string;
     updateTime: string;
   };
+  type dailyExposureCurveUsingGETParams = {
+    /** 是否包含当日 */
+    bIncludeToday?: boolean;
+  };
 }

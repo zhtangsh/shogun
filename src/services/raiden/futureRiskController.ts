@@ -22,12 +22,18 @@ export async function executionPreviewListUsingGet(
 }
 
 /** 获取日度总敞口曲线 获取日度总敞口曲线 GET /api/v1/future/risk/nameCode/exposure/cureve */
-export async function dailyExposureCurveUsingGet(options?: { [key: string]: any }) {
-  console.log(`${BACKEND_URL}api/v1/future/risk/nameCode/exposure/cureve`);
+export async function dailyExposureCurveUsingGet(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.dailyExposureCurveUsingGETParams,
+  options?: { [key: string]: any },
+) {
   return request<API.CommonResponse<API.FutureExposureCurveDto[]>>(
     `${BACKEND_URL}/api/v1/future/risk/nameCode/exposure/cureve`,
     {
       method: 'GET',
+      params: {
+        ...params,
+      },
       ...(options || {}),
     },
   );

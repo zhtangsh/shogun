@@ -83,7 +83,7 @@ const FutureExecutionPreviewProTable: React.FC = () => {
           onChange: (page) => console.log(page),
         }}
         dateFormatter="string"
-        headerTitle="当日品种敞口预览"
+        headerTitle="交易执行预览"
       />
     </>
   );
