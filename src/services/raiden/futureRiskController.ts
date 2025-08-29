@@ -56,3 +56,14 @@ export async function nameCodeUsingGet(
     },
   );
 }
+
+/** 获取日度帐户信息曲线 获取日度帐户信息曲线 GET /api/v1/future/risk/account/info/curve */
+export async function accountInfoCurveUsingGet(options?: { [key: string]: any }) {
+  return request<API.CommonResponse<API.AccountInfoDto[]>>(
+    `${BACKEND_URL}/api/v1/future/risk/account/info/curve`,
+    {
+      method: 'GET',
+      ...(options || {}),
+    },
+  );
+}

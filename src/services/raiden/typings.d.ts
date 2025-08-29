@@ -576,6 +576,7 @@ declare namespace API {
     accountId: string;
     available: number;
     balance: number;
+    marginRatio?: number;
     currMargin: number;
     sourceSystemCode: string;
     updateTime: string;

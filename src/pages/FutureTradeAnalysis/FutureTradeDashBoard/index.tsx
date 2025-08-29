@@ -1,7 +1,10 @@
 import ZoomableChart from '@/components/Chart/ZoomableChart';
 import { directionEnum, offsetEnum, tradeHourEnum } from '@/constants/enum';
 import { netPnlUsingGet, strategyPnlUsingGet } from '@/services/raiden/futureCtpInfoController';
-import { executionPreviewListUsingGet } from '@/services/raiden/futureRiskController';
+import {
+  accountInfoCurveUsingGet,
+  executionPreviewListUsingGet,
+} from '@/services/raiden/futureRiskController';
 import { getAccountInfoUsingGet } from '@/services/raiden/futureTradingClientInfoController';
 import { Line } from '@ant-design/charts';
 import {
@@ -13,12 +16,14 @@ import {
 } from '@ant-design/icons';
 import { ProCard, ProColumns, ProTable } from '@ant-design/pro-components';
 import { Card, Col, Row, Statistic } from 'antd';
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 
 const FutureTradeDashBoard: React.FC = () => {
   const [accountInfo, setAccountInfo] = useState<API.AccountInfoDto | null>(null);
   const [pnlData, setPnlData] = useState<API.StrategyPnlDto[]>([]);
   const [netPnlData, setNetPnlData] = useState<API.NetPnlDto[]>([]);
+  const [marginRatioData, setMarginRatioData] = useState<API.AccountInfoDto[]>([]);
 
   const fetchAccountInfo = async () => {
     const result = await getAccountInfoUsingGet();
@@ -62,6 +67,18 @@ const FutureTradeDashBoard: React.FC = () => {
     setNetPnlData(tmp);
   };
 
+  const fetchMarginRatioData = async () => {
+    const result = await accountInfoCurveUsingGet();
+    const tmp = [];
+    if (result.status === 0 && result.res) {
+      tmp.push(...result.res);
+    }
+    tmp.forEach((v) => (v.marginRatio = v.currMargin / v.balance));
+    tmp.forEach((v) => (v.updateTime = moment(v.updateTime).format('YYYY-MM-DD')));
+
+    setMarginRatioData(tmp);
+  };
+
   const fetchTradeExecutions = async (params: any) => {
     const { tradeHour } = params;
     const queryParams = { ...(tradeHour && { tradeHour }) };
@@ -84,6 +101,7 @@ const FutureTradeDashBoard: React.FC = () => {
       fetchAccountInfo();
       fetchPnlData();
       fetchNetPnlData();
+      fetchMarginRatioData();
     };
     loadData();
     // 设置每 5 分钟（300000ms）拉取一次账户信息
@@ -134,6 +152,31 @@ const FutureTradeDashBoard: React.FC = () => {
     theme: 'academy',
     xAxis: {
       type: 'date',
+      label: {
+        autoHide: true,
+        autoRotate: false,
+      },
+    },
+    legend: {
+      color: {
+        layout: {
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+        },
+      },
+    },
+  };
+  // 保证金率曲线配置
+  const marginRatioLineConfig = {
+    xField: 'updateTime',
+    yField: 'marginRatio',
+    padding: 'auto',
+    forceFit: true,
+    connectNulls: true,
+    theme: 'academy',
+    xAxis: {
+      type: 'time',
       label: {
         autoHide: true,
         autoRotate: false,
@@ -308,10 +351,18 @@ const FutureTradeDashBoard: React.FC = () => {
           </Card>
         </Col>
         {/* 收益率曲线卡片 */}
-        <Col xs={24} lg={24}>
+        <Col xs={24} lg={12}>
           <Card title="策略收益率曲线" bordered>
             <ZoomableChart title="策略收益率曲线">
               <Line {...lineConfig} data={pnlData} />
+            </ZoomableChart>
+          </Card>
+        </Col>
+        {/* 保证金率曲线卡片 */}
+        <Col xs={24} lg={12}>
+          <Card title="保证金率曲线" bordered>
+            <ZoomableChart title="保证金率曲线">
+              <Line {...marginRatioLineConfig} data={marginRatioData} />
             </ZoomableChart>
           </Card>
         </Col>
