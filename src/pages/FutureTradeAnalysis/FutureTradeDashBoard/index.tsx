@@ -18,6 +18,7 @@ import { ProCard, ProColumns, ProTable } from '@ant-design/pro-components';
 import { Card, Col, Row, Statistic } from 'antd';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
+const { STAGE } = window.API;
 
 const FutureTradeDashBoard: React.FC = () => {
   const [accountInfo, setAccountInfo] = useState<API.AccountInfoDto | null>(null);
@@ -51,16 +52,27 @@ const FutureTradeDashBoard: React.FC = () => {
       valueMethod: '总市值',
     };
     const result = await netPnlUsingGet(queryParams);
-    const tmp = [
-      {
+    const tmp = [];
+    if (STAGE === 'test') {
+      tmp.push({
         tradingDay: '2025-07-25',
         cumPnl: 0,
         npv: 1,
         r: 0,
         pnl: 0,
         value: 20000000,
-      },
-    ];
+      });
+    }
+    if (STAGE === 'prod') {
+      tmp.push({
+        tradingDay: '2025-11-24',
+        cumPnl: 0,
+        npv: 1,
+        r: 0,
+        pnl: 0,
+        value: 5500000,
+      });
+    }
     if (result.status === 0 && result.res) {
       tmp.push(...result.res);
     }
