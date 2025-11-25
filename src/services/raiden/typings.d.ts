@@ -585,4 +585,12 @@ declare namespace API {
     /** 是否包含当日 */
     bIncludeToday?: boolean;
   };
+  type StrategyWeightDto = {
+    strategyName: string;
+    weight: number;
+  };
+  type ContractWeightDto = {
+    strategyName: string;
+    weight: number;
+  };
 }
