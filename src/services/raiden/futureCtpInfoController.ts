@@ -129,3 +129,14 @@ export async function netPnlUsingGet(
     ...(options || {}),
   });
 }
+
+/** 获取大类收益率曲线 获取大类收益率曲线 GET /api/v1/future/ctp/nameCode/pnl */
+export async function nameCodePnlCurveUsingGet(options?: { [key: string]: any }) {
+  return request<API.CommonResponse<API.NameCodePnlDto[]>>(
+    `${BACKEND_URL}/api/v1/future/ctp/nameCode/pnl`,
+    {
+      method: 'GET',
+      ...(options || {}),
+    },
+  );
+}

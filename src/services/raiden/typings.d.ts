@@ -598,4 +598,20 @@ declare namespace API {
     totalVolume: number;
     weight: number;
   };
+  type NameCodePnlDto = {
+    /** 累积损益 */
+    cumPnl: number;
+    /** 期货类型 */
+    nameCodeCategory: string;
+    /** 净值 */
+    npv: number;
+    /** 当日损益 */
+    pnl: number;
+    /** 收益率 */
+    r: number;
+    /** 交易日 */
+    tradingDay: string;
+    /** 市值 */
+    value: number;
+  };
 }

@@ -99,6 +99,11 @@ export default [
         component: './FutureTradeAnalysis/FutureStrategyPnlOverview',
       },
       {
+        path: '/futureTradeAnalysis/strategyPnlCurve',
+        name: 'strategyPnlCurve',
+        component: './FutureTradeAnalysis/FutureNameCodePnlCurveOverview',
+      },
+      {
         path: '/futureTradeAnalysis/futureNameCodeExposure',
         name: 'futureNameCodeExposure',
         component: './FutureTradeAnalysis/FutureNameCodeExposureQuery',
