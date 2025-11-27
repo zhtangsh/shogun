@@ -3,6 +3,7 @@ import { PageContainer, ProCard } from '@ant-design/pro-components';
 import { Col, Row, Tabs } from 'antd';
 import React from 'react';
 import ContractExposureProTable from './components/ContractExposureProTable';
+import ContractVolumeProTable from './components/ContractVolumeProTable';
 import ExposureContractExposureProTable from './components/ExposureContractExposureProTable';
 import NeutralContractExposureProTable from './components/NeutralContractExposureProTable';
 import StrategyExposureProTable from './components/StrategyExposureProTable';
@@ -18,6 +19,11 @@ const FutureNameCodeExposureQuery: React.FC = () => {
       key: 'contractExposure',
       label: '汇总品种权重分析',
       children: <ContractExposureProTable />,
+    },
+    {
+      key: 'contractVolume',
+      label: '汇总品种手数分析',
+      children: <ContractVolumeProTable />,
     },
     {
       key: 'neutralStrategyExposure',

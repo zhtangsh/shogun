@@ -111,3 +111,14 @@ export async function exposureStrategyContractWeightListUsingGet(options?: { [ke
     },
   );
 }
+
+/** 汇总品种手数完整列表 汇总品种手数完整列表 GET /api/v1/future/risk/contractVolumeList */
+export async function contractVolumeListUsingGet(options?: { [key: string]: any }) {
+  return request<API.CommonResponse<API.ContractVolumeDto[]>>(
+    `${BACKEND_URL}/api/v1/future/risk/contractVolumeList`,
+    {
+      method: 'GET',
+      ...(options || {}),
+    },
+  );
+}

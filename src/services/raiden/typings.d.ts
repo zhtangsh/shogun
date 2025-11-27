@@ -593,4 +593,9 @@ declare namespace API {
     strategyName: string;
     weight: number;
   };
+  type ContractVolumeDto = {
+    contract: string;
+    totalVolume: number;
+    weight: number;
+  };
 }
