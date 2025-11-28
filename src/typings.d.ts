@@ -21,6 +21,7 @@ declare const REACT_APP_ENV: 'test' | 'dev' | 'pre' | false;
 
 type ApiType = {
   BACKEND_URL: string;
+  STAGE: string;
 };
 
 interface Window {
