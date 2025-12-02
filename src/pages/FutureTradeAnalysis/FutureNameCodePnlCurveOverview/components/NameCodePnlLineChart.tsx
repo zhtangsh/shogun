@@ -82,7 +82,7 @@ const NameCodePnlLineChart: React.FC<NameCodePnlLineChartProp> = (props) => {
       });
       tmp.push({
         tradingDay: '2025-11-21',
-        nameCodeCategory: '国债期货',
+        nameCodeCategory: '商品期货',
         cumPnl: 0,
         npv: 1,
         r: 0,
@@ -91,7 +91,7 @@ const NameCodePnlLineChart: React.FC<NameCodePnlLineChartProp> = (props) => {
       });
       tmp.push({
         tradingDay: '2025-11-21',
-        nameCodeCategory: '国债期货',
+        nameCodeCategory: '股指期货',
         cumPnl: 0,
         npv: 1,
         r: 0,
